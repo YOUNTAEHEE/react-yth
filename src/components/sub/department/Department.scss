@@ -1,0 +1,68 @@
+.Department {
+	.memberBox {
+		.con1 {
+			h2:nth-of-type(1) {
+				display: inline-block;
+				width: 32%;
+				font-size: 2.7rem;
+				font-weight: bold;
+			}
+			.con1PicBox {
+				position: absolute;
+				left: 0;
+				top: 35%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+
+				.con1Pic {
+					width: 25%;
+					height: 200px;
+					.con1Img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+				}
+			}
+		}
+		.con2 {
+			h2:nth-of-type(1) {
+				display: inline-block;
+				width: 32%;
+				font-size: 2rem;
+				font-weight: 500;
+				margin-top: 60vh;
+			}
+
+			.con2PicBox {
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+				margin-top: 5vh;
+				gap: 35px;
+				article {
+					width: 30%;
+					margin-bottom: 50px;
+					.con2Pic {
+						width: 100%;
+						height: 465px;
+						margin-bottom: 10px;
+						.con2Img {
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+						}
+					}
+					h3 {
+						font-size: 1.7rem;
+						margin-bottom: -5px;
+					}
+					p {
+						font-size: 1.2rem;
+					}
+				}
+			}
+		}
+	}
+}

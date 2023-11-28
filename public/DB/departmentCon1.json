@@ -1,0 +1,23 @@
+{
+  "Member-activities": [
+    {
+      "name":"활동하는 사진01",
+      "pic": "department-con1-01.jpg"
+    },
+    {"name":"활동하는 사진02",
+      "pic": "department-con1-02.jpg"
+    },
+    {"name":"활동하는 사진03",
+      "pic": "department-con1-03.jpg"
+    },
+    {"name":"활동하는 사진04",
+      "pic": "department-con1-04.jpg"
+    },
+    {"name":"활동하는 사진05",
+      "pic": "department-con1-05.jpg"
+    },
+    {"name":"활동하는 사진06",
+      "pic": "department-con1-06.jpg"
+    }
+  ]
+}
