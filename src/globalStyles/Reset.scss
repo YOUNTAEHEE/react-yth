@@ -10,10 +10,16 @@ li {
 	list-style: none;
 }
 
-a{
-  outline: 0;
-  color:inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  text-decoration: none;
+a {
+	outline: 0;
+	color: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	text-decoration: none;
+}
+.wrap {
+	width: 100%;
+	color: var(--baseColor);
+	font-family: var(--baseFont);
+	font-size: (--bodySize);
 }

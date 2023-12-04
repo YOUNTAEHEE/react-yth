@@ -1,23 +1,42 @@
 .Department {
+	margin: 100px auto 0 auto;
 	.memberBox {
 		.con1 {
-			h2:nth-of-type(1) {
+			p {
 				display: inline-block;
 				width: 32%;
-				font-size: 2.7rem;
+				font-size: var(--titSize);
 				font-weight: bold;
+				margin-bottom: 5vh;
 			}
 			.con1PicBox {
-				position: absolute;
-				left: 0;
-				top: 35%;
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
 
 				.con1Pic {
-					width: 25%;
-					height: 200px;
+					width: 33%;
+					&:nth-of-type(1) {
+						height: 200px;
+					}
+					&:nth-of-type(2) {
+						height: 100px;
+					}
+					&:nth-of-type(3) {
+						height: 150px;
+					}
+					&:nth-of-type(4) {
+						height: 100px;
+						margin-top: 10px;
+					}
+					&:nth-of-type(5) {
+						height: 200px;
+						margin-top: -90px;
+					}
+					&:nth-of-type(6) {
+						height: 150px;
+						margin-top: -40px;
+					}
 					.con1Img {
 						width: 100%;
 						height: 100%;
@@ -27,12 +46,12 @@
 			}
 		}
 		.con2 {
-			h2:nth-of-type(1) {
+			> p:nth-of-type(1) {
 				display: inline-block;
-				width: 32%;
-				font-size: 2rem;
+				width: 50%;
+				font-size: var(--titSize);
 				font-weight: 500;
-				margin-top: 60vh;
+				margin-top: 20vh;
 			}
 
 			.con2PicBox {
@@ -40,10 +59,23 @@
 				justify-content: space-between;
 				flex-wrap: wrap;
 				margin-top: 5vh;
-				gap: 35px;
 				article {
 					width: 30%;
 					margin-bottom: 50px;
+
+					&:nth-of-type(1) {
+						margin-top: 100px;
+					}
+					&:nth-of-type(2) {
+						margin-top: 50px;
+					}
+					&:nth-of-type(4) {
+						margin-top: 100px;
+					}
+					&:nth-of-type(5) {
+						margin-top: 50px;
+					}
+
 					.con2Pic {
 						width: 100%;
 						height: 465px;
@@ -54,13 +86,266 @@
 							object-fit: cover;
 						}
 					}
-					h3 {
-						font-size: 1.7rem;
-						margin-bottom: -5px;
+					h2 {
+						font-size: var(--midSize);
+						margin-bottom: 5px;
 					}
 					p {
-						font-size: 1.2rem;
+						font-size: var(--bodySize);
 					}
+				}
+			}
+		}
+		.departmentBg {
+			margin-top: 20vh;
+			width: 100%;
+			height: 45vh;
+			background-image: url(../../../../public/img/departmentBg.jpg);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.departmentContact {
+				width: 90%;
+				> p {
+					display: flex;
+					flex-wrap: wrap;
+					width: 90%;
+					font-size: var(--titSize);
+					color: var(--whiteColor);
+				}
+				button {
+					border: none;
+					outline: none;
+					cursor: pointer;
+					width: 200px;
+					height: 50px;
+					border-radius: 80px;
+					background-color: white;
+					margin-top: 25px;
+					font-size: var(--bodySize);
+				}
+			}
+		}
+		.departmentLocation {
+			width: 100%;
+			display: flex;
+			.departmentMap {
+				width: 60%;
+				.dLPic {
+					width: 100%;
+					height: 450px;
+					background: #111;
+					position: relative;
+					display: flex;
+					flex-wrap: wrap;
+					align-content: space-between;
+					padding: 20px;
+					img {
+						position: absolute;
+						top: 0;
+						opacity: 0.4;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+					}
+					p:nth-of-type(1) {
+						width: 100%;
+						position: relative;
+						color: white;
+						opacity: 0.6;
+					}
+					p:nth-of-type(2) {
+						width: 100%;
+						position: relative;
+						color: white;
+						opacity: 0.6;
+					}
+				}
+			}
+			.DLPic2 {
+				width: 40%;
+				height: 310px;
+				> img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+}
+
+.tablet,
+.mobile {
+	.Department {
+		margin: 80px auto 0 auto;
+		.memberBox {
+			.con1 {
+				p {
+					width: 60%;
+				}
+				.con1PicBox {
+					.con1Pic {
+						width: 48%;
+						&:nth-of-type(1) {
+							height: 200px;
+						}
+						&:nth-of-type(2) {
+							height: 100px;
+						}
+						&:nth-of-type(3) {
+							height: 100px;
+							margin-top: 10px;
+						}
+						&:nth-of-type(4) {
+							height: 200px;
+							margin-top: -90px;
+						}
+						&:nth-of-type(5) {
+							display: none;
+						}
+						&:nth-of-type(6) {
+							display: none;
+						}
+					}
+				}
+			}
+			.con2 {
+				> p:nth-of-type(1) {
+					margin-top: 15vh;
+					width: 75%;
+				}
+			}
+
+			.departmentBg {
+				margin-top: 15vh;
+				height: 35vh;
+
+				.departmentContact {
+					width: 85%;
+					> p {
+						width: 85%;
+						font-size: 2rem;
+					}
+				}
+			}
+			.departmentLocation {
+				.departmentMap {
+					.dLPic {
+						height: 380px;
+
+						p:nth-of-type(1) {
+							font-size: 1.3rem;
+						}
+						p:nth-of-type(2) {
+							font-size: 1.3rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.mobile {
+	.Department {
+		margin: 70px auto 0 auto;
+		.memberBox {
+			.con1 {
+				p {
+					width: 100%;
+					font-size: var(--midSize);
+				}
+				.con1PicBox {
+					.con1Pic {
+						&:nth-of-type(1) {
+							width: 60%;
+							height: 200px;
+						}
+						&:nth-of-type(2) {
+							width: 38%;
+							height: 200px;
+						}
+						&:nth-of-type(3) {
+							display: none;
+						}
+						&:nth-of-type(4) {
+							display: none;
+						}
+						&:nth-of-type(5) {
+							display: none;
+						}
+						&:nth-of-type(6) {
+							display: none;
+						}
+					}
+				}
+			}
+			.con2 {
+				> p:nth-of-type(1) {
+					width: 80%;
+					font-size: var(--midSize);
+					margin-top: 10vh;
+				}
+
+				.con2PicBox {
+					margin-top: 5vh;
+					article {
+						width: 45%;
+						margin-bottom: 5px;
+
+						&:nth-of-type(1) {
+							margin-top: 100px;
+						}
+						&:nth-of-type(2) {
+							margin-top: 50px;
+						}
+						&:nth-of-type(3) {
+							margin-top: 100px;
+						}
+						&:nth-of-type(4) {
+							margin-top: 50px;
+						}
+						&:nth-of-type(5) {
+							margin-top: 100px;
+						}
+						&:nth-of-type(6) {
+							margin-top: 50px;
+						}
+
+						.con2Pic {
+							height: 400px;
+						}
+					}
+				}
+			}
+			.departmentBg {
+				margin-top: 10vh;
+				height: 25vh;
+
+				.departmentContact {
+					width: 90%;
+					> p {
+						width: 90%;
+						font-size: var(--midSize);
+					}
+				}
+			}
+			.departmentLocation {
+				.departmentMap {
+					.dLPic {
+						height: 330px;
+
+						p:nth-of-type(1) {
+							font-size: 1.3rem;
+						}
+						p:nth-of-type(2) {
+							font-size: 1.3rem;
+						}
+					}
+				}
+				.DLPic2 {
+					height: 250px;
 				}
 			}
 		}

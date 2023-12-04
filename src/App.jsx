@@ -8,11 +8,19 @@ import Gallery from './components/sub/gallery/Gallery';
 import Youtube from './components/sub/youtube/Youtube';
 import Contact from './components/sub/contact/Contact';
 import MainWrap from './components/main/mainWrap/MainWrap';
+import './globalStyles/Variables.scss';
+import './globalStyles/Reset.scss';
+import { useState } from 'react';
+import Menu from './components/common/menu/Menu';
+import { useMedia } from './hooks/useMedia';
 
 function App() {
+	const [Toggle, setToggle] = useState(false);
+	const [Dark, setDark] = useState(false);
+
 	return (
-		<>
-			<Header />
+		<div className={`wrap ${Dark ? 'dark' : ''} ${useMedia()}`}>
+			<Header Toggle={Toggle} setToggle={setToggle} Dark={Dark} setDark={setDark} />
 			<Route exact path='/' component={MainWrap} />
 			<Route path='/department' component={Department} />
 			<Route path='/youtube' component={Youtube} />
@@ -21,7 +29,8 @@ function App() {
 			<Route path='/members' component={Members} />
 			<Route path='/contact' component={Contact} />
 			<Footer />
-		</>
+			{Toggle && <Menu />}
+		</div>
 	);
 }
 

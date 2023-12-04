@@ -2,10 +2,12 @@
 
 :root{
   --baseColor:#111;
-  --pointColor:rgb(79, 57, 249)
-  --bgColor:#efefef;
+  --baseColor-code:18, 18, 18;
+  --pointColor:rgb(79, 57, 249);
+  --whiteColor:#fff;
   --baseFont:'Noto Sans KR', 'arial' '돋움';
   --pointFont:'Noto Sans KR', 'serif' '돋움';
   --titSize:2.3rem;
+  --midSize:1.7rem;
   --bodySize:1rem;
 }
