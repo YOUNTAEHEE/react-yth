@@ -13,6 +13,7 @@ import './globalStyles/Reset.scss';
 import { useState } from 'react';
 import Menu from './components/common/menu/Menu';
 import { useMedia } from './hooks/useMedia';
+import Detail from './components/sub/youtube/Detail';
 
 function App() {
 	const [Toggle, setToggle] = useState(false);
@@ -24,6 +25,7 @@ function App() {
 			<Route exact path='/' component={MainWrap} />
 			<Route path='/department' component={Department} />
 			<Route path='/youtube' component={Youtube} />
+			<Route path='/detail/:id' component={Detail} />
 			<Route path='/gallery' component={Gallery} />
 			<Route path='/community' component={Community} />
 			<Route path='/members' component={Members} />
