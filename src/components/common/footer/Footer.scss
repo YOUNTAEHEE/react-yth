@@ -5,20 +5,24 @@
 	width: 70vw;
 	margin: 0 auto;
 	padding: 40px 30px;
-	background-color: var(--baseColor);
-	color: var(--whiteColor);
+	background-color: #111;
+	color: var(--onlyWhiteColor);
 	align-content: flex-end;
 
 	.footerLeft {
-		transform: translate(0, 60px);
+		width: 50%;
+		display: flex;
+		flex-wrap: wrap;
+		align-content: flex-end;
 		h1 {
 			display: block;
-
+			width: 100%;
 			font-size: var(--midSize);
 			opacity: 0.9;
 			line-height: 1.5;
 		}
 		p {
+			width: 100%;
 			display: block;
 			opacity: 0.9;
 			line-height: 1.5;
@@ -32,7 +36,6 @@
 		p {
 			opacity: 0.9;
 			display: inline-block;
-			margin-bottom: 20px;
 		}
 
 		ul {
@@ -60,12 +63,12 @@
 	.Footer {
 		width: 80vw;
 		.footerLeft {
-			transform: none;
 			h1 {
 				display: block;
 			}
 		}
 		.footerRight {
+			width: 50%;
 			align-content: flex-end;
 			flex-wrap: wrap;
 			width: 100%;
@@ -96,8 +99,14 @@
 .mobile {
 	.Footer {
 		width: 85vw;
+		.footerLeft {
+			width: 100%;
+		}
 		.footerRight {
+			width: 100%;
+
 			ul {
+				height: auto;
 				flex-wrap: wrap;
 				align-items: center;
 			}

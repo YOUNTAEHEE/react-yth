@@ -1,14 +1,20 @@
 .Department {
 	margin: 100px auto 0 auto;
+	width: 100%;
 	.memberBox {
 		.con1 {
-			p {
-				display: inline-block;
-				width: 32%;
-				font-size: var(--titSize);
-				font-weight: bold;
-				margin-bottom: 5vh;
+			> div:nth-of-type(1) {
+				width: 70vw;
+				margin: 0 auto;
+				p {
+					display: inline-block;
+					width: 32%;
+					font-size: var(--titSize);
+					font-weight: bold;
+					margin-bottom: 5vh;
+				}
 			}
+
 			.con1PicBox {
 				display: flex;
 				flex-wrap: wrap;
@@ -17,13 +23,13 @@
 				.con1Pic {
 					width: 33%;
 					&:nth-of-type(1) {
-						height: 200px;
+						height: 250px;
 					}
 					&:nth-of-type(2) {
-						height: 100px;
+						height: 150px;
 					}
 					&:nth-of-type(3) {
-						height: 150px;
+						height: 200px;
 					}
 					&:nth-of-type(4) {
 						height: 100px;
@@ -45,131 +51,135 @@
 				}
 			}
 		}
-		.con2 {
-			> p:nth-of-type(1) {
-				display: inline-block;
-				width: 50%;
-				font-size: var(--titSize);
-				font-weight: 500;
-				margin-top: 20vh;
-			}
+		.bottomConWrap {
+			width: 70vw;
+			margin: 0 auto;
+			.con2 {
+				> p:nth-of-type(1) {
+					display: inline-block;
+					width: 50%;
+					font-size: var(--titSize);
+					font-weight: 500;
+					margin-top: 20vh;
+				}
 
-			.con2PicBox {
-				display: flex;
-				justify-content: space-between;
-				flex-wrap: wrap;
-				margin-top: 5vh;
-				article {
-					width: 30%;
-					margin-bottom: 50px;
+				.con2PicBox {
+					display: flex;
+					justify-content: space-between;
+					flex-wrap: wrap;
+					margin-top: 5vh;
+					article {
+						width: 30%;
+						margin-bottom: 50px;
 
-					&:nth-of-type(1) {
-						margin-top: 100px;
-					}
-					&:nth-of-type(2) {
-						margin-top: 50px;
-					}
-					&:nth-of-type(4) {
-						margin-top: 100px;
-					}
-					&:nth-of-type(5) {
-						margin-top: 50px;
-					}
+						&:nth-of-type(1) {
+							margin-top: 100px;
+						}
+						&:nth-of-type(2) {
+							margin-top: 50px;
+						}
+						&:nth-of-type(4) {
+							margin-top: 100px;
+						}
+						&:nth-of-type(5) {
+							margin-top: 50px;
+						}
 
-					.con2Pic {
-						width: 100%;
-						height: 465px;
-						margin-bottom: 10px;
-						.con2Img {
+						.con2Pic {
 							width: 100%;
-							height: 100%;
-							object-fit: cover;
+							height: 465px;
+							margin-bottom: 10px;
+							.con2Img {
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
+							}
+						}
+						h2 {
+							font-size: var(--midSize);
+							margin-bottom: 5px;
+						}
+						p {
+							font-size: var(--bodySize);
 						}
 					}
-					h2 {
-						font-size: var(--midSize);
-						margin-bottom: 5px;
+				}
+			}
+			.departmentBg {
+				margin-top: 20vh;
+				width: 100%;
+				height: 45vh;
+				background-image: url(../../../../public/img/departmentBg.jpg);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				.departmentContact {
+					width: 90%;
+					> p {
+						display: flex;
+						flex-wrap: wrap;
+						width: 90%;
+						font-size: var(--titSize);
+						color: var(--onlyWhiteColor);
 					}
-					p {
+					button {
+						border: none;
+						outline: none;
+						cursor: pointer;
+						width: 200px;
+						height: 50px;
+						border-radius: 80px;
+						background-color: white;
+						margin-top: 25px;
 						font-size: var(--bodySize);
 					}
 				}
 			}
-		}
-		.departmentBg {
-			margin-top: 20vh;
-			width: 100%;
-			height: 45vh;
-			background-image: url(../../../../public/img/departmentBg.jpg);
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			.departmentContact {
-				width: 90%;
-				> p {
-					display: flex;
-					flex-wrap: wrap;
-					width: 90%;
-					font-size: var(--titSize);
-					color: var(--whiteColor);
+			.departmentLocation {
+				width: 100%;
+				display: flex;
+				.departmentMap {
+					width: 60%;
+					.dLPic {
+						width: 100%;
+						height: 450px;
+						background: #111;
+						position: relative;
+						display: flex;
+						flex-wrap: wrap;
+						align-content: space-between;
+						padding: 20px;
+						img {
+							position: absolute;
+							top: 0;
+							opacity: 0.4;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+						}
+						p:nth-of-type(1) {
+							width: 100%;
+							position: relative;
+							color: white;
+							opacity: 0.6;
+						}
+						p:nth-of-type(2) {
+							width: 100%;
+							position: relative;
+							color: white;
+							opacity: 0.6;
+						}
+					}
 				}
-				button {
-					border: none;
-					outline: none;
-					cursor: pointer;
-					width: 200px;
-					height: 50px;
-					border-radius: 80px;
-					background-color: white;
-					margin-top: 25px;
-					font-size: var(--bodySize);
-				}
-			}
-		}
-		.departmentLocation {
-			width: 100%;
-			display: flex;
-			.departmentMap {
-				width: 60%;
-				.dLPic {
-					width: 100%;
-					height: 450px;
-					background: #111;
-					position: relative;
-					display: flex;
-					flex-wrap: wrap;
-					align-content: space-between;
-					padding: 20px;
-					img {
-						position: absolute;
-						top: 0;
-						opacity: 0.4;
-						left: 0;
+				.DLPic2 {
+					width: 40%;
+					height: 310px;
+					> img {
 						width: 100%;
 						height: 100%;
 						object-fit: cover;
 					}
-					p:nth-of-type(1) {
-						width: 100%;
-						position: relative;
-						color: white;
-						opacity: 0.6;
-					}
-					p:nth-of-type(2) {
-						width: 100%;
-						position: relative;
-						color: white;
-						opacity: 0.6;
-					}
-				}
-			}
-			.DLPic2 {
-				width: 40%;
-				height: 310px;
-				> img {
-					width: 100%;
-					height: 100%;
-					object-fit: cover;
 				}
 			}
 		}
@@ -182,8 +192,12 @@
 		margin: 80px auto 0 auto;
 		.memberBox {
 			.con1 {
-				p {
-					width: 60%;
+				> div:nth-of-type(1) {
+					width: 80vw;
+					margin: 0 auto;
+					p {
+						width: 100%;
+					}
 				}
 				.con1PicBox {
 					.con1Pic {
@@ -211,35 +225,39 @@
 					}
 				}
 			}
-			.con2 {
-				> p:nth-of-type(1) {
-					margin-top: 15vh;
-					width: 75%;
-				}
-			}
-
-			.departmentBg {
-				margin-top: 15vh;
-				height: 35vh;
-
-				.departmentContact {
-					width: 85%;
-					> p {
-						width: 85%;
-						font-size: 2rem;
+			.bottomConWrap {
+				width: 80vw;
+				margin: 0 auto;
+				.con2 {
+					> p:nth-of-type(1) {
+						margin-top: 15vh;
+						width: 100%;
 					}
 				}
-			}
-			.departmentLocation {
-				.departmentMap {
-					.dLPic {
-						height: 380px;
 
-						p:nth-of-type(1) {
-							font-size: 1.3rem;
+				.departmentBg {
+					margin-top: 15vh;
+					height: 35vh;
+
+					.departmentContact {
+						width: 85%;
+						> p {
+							width: 85%;
+							font-size: 2rem;
 						}
-						p:nth-of-type(2) {
-							font-size: 1.3rem;
+					}
+				}
+				.departmentLocation {
+					.departmentMap {
+						.dLPic {
+							height: 380px;
+
+							p:nth-of-type(1) {
+								font-size: 1.3rem;
+							}
+							p:nth-of-type(2) {
+								font-size: 1.3rem;
+							}
 						}
 					}
 				}
@@ -252,19 +270,22 @@
 		margin: 70px auto 0 auto;
 		.memberBox {
 			.con1 {
-				p {
-					width: 100%;
-					font-size: var(--midSize);
+				> div:nth-of-type(1) {
+					width: 85vw;
+					margin: 0 auto;
+					p {
+						width: 100%;
+						font-size: var(--midSize);
+					}
 				}
 				.con1PicBox {
 					.con1Pic {
 						&:nth-of-type(1) {
-							width: 60%;
+							width: 100%;
 							height: 200px;
 						}
 						&:nth-of-type(2) {
-							width: 38%;
-							height: 200px;
+							display: none;
 						}
 						&:nth-of-type(3) {
 							display: none;
@@ -281,71 +302,76 @@
 					}
 				}
 			}
-			.con2 {
-				> p:nth-of-type(1) {
-					width: 80%;
-					font-size: var(--midSize);
-					margin-top: 10vh;
-				}
-
-				.con2PicBox {
-					margin-top: 5vh;
-					article {
-						width: 45%;
-						margin-bottom: 5px;
-
-						&:nth-of-type(1) {
-							margin-top: 100px;
-						}
-						&:nth-of-type(2) {
-							margin-top: 50px;
-						}
-						&:nth-of-type(3) {
-							margin-top: 100px;
-						}
-						&:nth-of-type(4) {
-							margin-top: 50px;
-						}
-						&:nth-of-type(5) {
-							margin-top: 100px;
-						}
-						&:nth-of-type(6) {
-							margin-top: 50px;
-						}
-
-						.con2Pic {
-							height: 400px;
-						}
-					}
-				}
-			}
-			.departmentBg {
-				margin-top: 10vh;
-				height: 25vh;
-
-				.departmentContact {
-					width: 90%;
-					> p {
-						width: 90%;
+			.bottomConWrap {
+				width: 85vw;
+				margin: 0 auto;
+				.con2 {
+					> p:nth-of-type(1) {
+						width: 80%;
 						font-size: var(--midSize);
+						margin-top: 8vh;
 					}
-				}
-			}
-			.departmentLocation {
-				.departmentMap {
-					.dLPic {
-						height: 330px;
 
-						p:nth-of-type(1) {
-							font-size: 1.3rem;
+					.con2PicBox {
+						margin-top: 8vh;
+						article {
+							width: 100%;
+							margin-bottom: 5vh;
+
+							&:nth-of-type(1) {
+								margin-top: 0;
+							}
+							&:nth-of-type(2) {
+								margin-top: 0;
+							}
+							&:nth-of-type(3) {
+								margin-top: 0;
+							}
+							&:nth-of-type(4) {
+								margin-top: 0;
+							}
+							&:nth-of-type(5) {
+								margin-top: 0;
+							}
+							&:nth-of-type(6) {
+								margin-top: 0;
+							}
+
+							.con2Pic {
+								height: 400px;
+							}
 						}
-						p:nth-of-type(2) {
+					}
+				}
+				.departmentBg {
+					margin-top: 5vh;
+					height: 25vh;
+
+					.departmentContact {
+						> p {
+							width: 100%;
 							font-size: 1.3rem;
 						}
 					}
 				}
-				.DLPic2 {
-					height: 250px;
+				.departmentLocation {
+					.departmentMap {
+						width: 100%;
+						.dLPic {
+							height: 280px;
+
+							p:nth-of-type(1) {
+								font-size: 1.1rem;
+							}
+							p:nth-of-type(2) {
+								font-size: 1.1rem;
+							}
+						}
+					}
+					.DLPic2 {
+						height: 0;
+						display: none;
+					}
 				}
 			}
 		}

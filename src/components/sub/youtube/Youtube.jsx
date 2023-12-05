@@ -7,12 +7,18 @@ import { useCustomText } from '../../../hooks/useText';
 export default function Youtube() {
 	const [Vids, setVids] = useState([]);
 	const monthName = ['Jan', 'Feb', 'Marc', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	const currentMonth = () => {
+		const currentDate = new Date();
+		const today = currentDate.getMonth() + 1;
+		return monthName[today];
+	};
+
 	const shortenText = useCustomText('shorten');
 	const path = useRef(process.env.PUBLIC_URL);
 	const fetchYoutube = async () => {
 		const api_key = process.env.REACT_APP_YOUTUBE_API;
 		const pid = process.env.REACT_APP_YOUTUBE_LIST;
-		const num = 10;
+		const num = 11;
 		const baseURL = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
 		try {
 			const data = await fetch(baseURL);
@@ -57,7 +63,7 @@ export default function Youtube() {
 				<p>Walk Don't Run</p>
 			</div>
 			<div className='con3'>
-				{Vids.slice(3).map((data) => {
+				{Vids.slice(3).map((data, index) => {
 					const [date, time] = data.snippet.publishedAt.split('T');
 					const [year, month, day] = date.split('-');
 					return (
@@ -66,7 +72,7 @@ export default function Youtube() {
 								<div className='con3Pic'>
 									<div className='con3Date'>
 										<div>{day}</div>
-										<div>{monthName[month]}</div>
+										<div>{month !== undefined ? monthName[month + 1] : currentMonth()}</div>
 									</div>
 									<Link to={`/detail/${data.id}`}>
 										<img src={data.snippet.thumbnails.standard.url} alt={data.snippet.title} />

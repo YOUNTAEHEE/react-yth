@@ -1,5 +1,4 @@
 .Youtube {
-	width: 70vw;
 
 	h2 {
 		font-size: var(--titSize);
@@ -13,7 +12,7 @@
 		justify-content: flex-end;
 		article {
 			padding: 0 25px 0 25px;
-			border-right: 1px solid #999;
+			border-right: 1px solid rgba(var(--baseColor-code),0.3);
 			width: 25%;
 
 			&:last-child {
@@ -93,18 +92,20 @@
 		justify-content: center;
 		align-content: center;
 		.articleWrap {
-			margin-bottom: 25px;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: flex-start;
-			align-content:center;
+			align-content: center;
 			width: 50%;
 			gap: 30px;
 			padding: 0 35px 0 35px;
-			border-right: 1px solid #999;
+			margin-bottom: 8vh;
+			border-right: 1px solid rgba(var(--baseColor-code),0.3);
+			&:nth-of-type(even) {
+				border-right: none;
+			}
 			article {
 				width: 40%;
-				margin-bottom: 10vh;
 				display: flex;
 				justify-content: space-between;
 				flex-wrap: wrap;
@@ -156,6 +157,67 @@
 				p {
 					margin-top: 10px;
 					font-size: 0.8rem;
+				}
+			}
+		}
+	}
+}
+.tablet,
+.mobile {
+	.Youtube {
+
+		.con1 {
+			justify-content: center;
+			article {
+				padding: 0 18px 0 18px;
+				width: 33%;
+			}
+		}
+		.con2 {
+			margin-top: 10vh;
+			height: 250px;
+		}
+		.con3 {
+			margin-top: 10vh;
+
+			.articleWrap {
+				width: 100%;
+				border: none;
+				gap: 20px;
+				padding: 0 18px 0 18px;
+				margin-bottom: 6vh;
+			}
+		}
+	}
+}
+
+.mobile {
+	.Youtube {
+		.con1 {
+			justify-content: center;
+			article {
+				border: none;
+				padding: 0;
+				width: 100%;
+				margin-bottom: 35px;
+			}
+		}
+		.con2 {
+			margin-top: 5vh;
+			height: 150px;
+		}
+		.con3 {
+			margin-top: 5vh;
+			.articleWrap {
+				gap: 20px;
+				padding: 0;
+				margin-bottom: 5vh;
+				article {
+					width: 100%;
+				}
+				.txt {
+					width: 100%;
+					
 				}
 			}
 		}
