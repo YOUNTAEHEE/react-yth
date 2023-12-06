@@ -7,11 +7,6 @@ import { useCustomText } from '../../../hooks/useText';
 export default function Youtube() {
 	const [Vids, setVids] = useState([]);
 	const monthName = ['Jan', 'Feb', 'Marc', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-	const currentMonth = () => {
-		const currentDate = new Date();
-		const today = currentDate.getMonth() + 1;
-		return monthName[today];
-	};
 
 	const shortenText = useCustomText('shorten');
 	const path = useRef(process.env.PUBLIC_URL);
@@ -43,13 +38,13 @@ export default function Youtube() {
 					return (
 						<article key={data.id}>
 							<div className='pic'>
-								<div className='date'>
-									<div>{day}</div>
-									<div>{monthName[month]}</div>
-								</div>
 								<Link to={`/detail/${data.id}`}>
 									<img src={data.snippet.thumbnails.standard.url} alt={data.snippet.title} />
 								</Link>
+								<div className='date'>
+									<div>{day}</div>
+									<div>{monthName[month - 1]}</div>
+								</div>
 							</div>
 
 							<h3>{shortenText(data.snippet.title, 50)}</h3>
@@ -64,19 +59,20 @@ export default function Youtube() {
 			</div>
 			<div className='con3'>
 				{Vids.slice(3).map((data, index) => {
+					console.log(data.snippet.publishedAt);
 					const [date, time] = data.snippet.publishedAt.split('T');
 					const [year, month, day] = date.split('-');
 					return (
-						<div className='articleWrap'>
-							<article key={data.id}>
+						<div className='articleWrap' key={data.id}>
+							<article>
 								<div className='con3Pic'>
-									<div className='con3Date'>
-										<div>{day}</div>
-										<div>{month !== undefined ? monthName[month + 1] : currentMonth()}</div>
-									</div>
 									<Link to={`/detail/${data.id}`}>
 										<img src={data.snippet.thumbnails.standard.url} alt={data.snippet.title} />
 									</Link>
+								</div>
+								<div className='con3Date'>
+									<div>{day}</div>
+									<div>{monthName[month - 1]}</div>
 								</div>
 							</article>
 							<div className='txt'>
