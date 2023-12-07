@@ -4,16 +4,20 @@
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
+		gap: 15px;
 		padding: 20px 5px;
+		flex-wrap: wrap;
 		.btnSet {
 			display: flex;
+			flex-wrap: wrap;
 			gap: 15px;
+	
 			button {
 				background-color: transparent;
 				border: none;
 				cursor: pointer;
 				border-bottom: 1px solid rgba(var(--baseColor-code), 0.3);
-				padding-bottom: 6px;
+		
 				color: rgba(var(--baseColor-code), 0.3);
 				&:hover {
 					transition: color 1s;
@@ -29,13 +33,12 @@
 		form {
 			display: flex;
 			align-items: center;
-			gap: 10px;
+			gap: 10px;			
 			input {
 				width: 120px;
 				border: none;
 				background: transparent;
 				border-bottom: 1px solid rgba(var(--baseColor-code), 0.3);
-				padding-bottom: 6px;
 				outline: 0;
 				color: var(--baseColor);
 				&:focus {
@@ -77,17 +80,17 @@
 					bottom: 0;
 					left: 0;
 					i {
-						width: 80%;
 						font-size: 0.8rem;
 						color: var(--pointColor);
 						opacity: 0.9;
 						cursor: pointer;
+						word-break: break-all;
 					}
 					h2 {
-						width: 80%;
 						font-size: 1.2rem;
 						font-weight: normal;
 						margin-bottom: 10px;
+						word-break: break-all;
 					}
 					.viewBox {
 						display: flex;
@@ -108,5 +111,25 @@
 				}
 			}
 		}
+	}
+}
+//laptop
+.laptop {
+	.Gallery {
+		--num: 3;
+	}
+}
+
+//tablet
+.tablet {
+	.Gallery {
+		--num: 2;
+	}
+}
+
+//mobile
+.mobile {
+	.Gallery {
+		--num: 1;
 	}
 }

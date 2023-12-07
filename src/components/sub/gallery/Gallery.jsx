@@ -4,7 +4,12 @@ import './Gallery.scss';
 import Masonry from 'react-masonry-component';
 import { useCustomText } from '../../../hooks/useText';
 import { LuSearch } from 'react-icons/lu';
+import Modal from '../../common/modal/Modal';
 export default function Gallery() {
+	const [Open, setOpen] = useState(false);
+	const [Index, setIndex] = useState(0);
+	const searched = useRef(false);
+
 	const myID = useRef('199625511@N07');
 	const isUser = useRef(myID.current);
 
@@ -57,6 +62,7 @@ export default function Gallery() {
 		if (!keyword.trim()) return;
 		e.target.children[0].value = '';
 		fetchFlickr({ type: 'search', keyword: keyword });
+		searched.current = true;
 	};
 	const fetchFlickr = async (opt) => {
 		const num = 50;
@@ -83,49 +89,63 @@ export default function Gallery() {
 		fetchFlickr({ type: 'user', id: myID.current });
 	}, []);
 	return (
-		<Layout title={'Gallery'}>
-			<article className='controls'>
-				<nav className='btnSet' ref={refNav}>
-					<button onClick={handleInterest}>Interest Gallery</button>
-					<button className='on' onClick={handleMine}>
-						My Gallery
-					</button>
-				</nav>
+		<>
+			<Layout title={'Gallery'}>
+				<article className='controls'>
+					<nav className='btnSet' ref={refNav}>
+						<button onClick={handleInterest}>Interest Gallery</button>
+						<button className='on' onClick={handleMine}>
+							My Gallery
+						</button>
+					</nav>
 
-				<form onSubmit={handleSearch}>
-					<input type='text' placeholder='Search' />
+					<form onSubmit={handleSearch}>
+						<input type='text' placeholder='Search' />
 
-					<button className='btnSearch'>
-						<LuSearch />
-					</button>
-				</form>
-			</article>
-			<section className='frameWrap' ref={refFrmaeWrap}>
-				<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: gap.current }}>
-					{Pics.length === 0 ? (
-						<h2>해당 키워드에 대한 검색 결과가 없습니다.</h2>
-					) : (
-						Pics.map((pic, idx) => {
-							return (
-								<article key={pic.id}>
-									<div className='pic'>
-										<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt={pic.title} />
-									</div>
-
-									<div className='txt'>
-										<i onClick={handleUser}>{pic.owner}</i>
-										<h2>{shortenText(pic.title, 20)}</h2>
-										<div className='viewBox'>
-											<p className='line'></p>
-											<p>view</p>
+						<button className='btnSearch'>
+							<LuSearch />
+						</button>
+					</form>
+				</article>
+				<section className='frameWrap' ref={refFrmaeWrap}>
+					<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: gap.current }}>
+						{searched.current && Pics.length === 0 ? (
+							<h2>해당 키워드에 대한 검색 결과가 없습니다.</h2>
+						) : (
+							Pics.map((pic, idx) => {
+								return (
+									<article key={pic.id}>
+										<div className='pic'>
+											<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt={pic.title} />
 										</div>
-									</div>
-								</article>
-							);
-						})
-					)}
-				</Masonry>
-			</section>
-		</Layout>
+
+										<div className='txt'>
+											<i onClick={handleUser}>{pic.owner}</i>
+											<h2>{shortenText(pic.title, 20)}</h2>
+											<div className='viewBox'>
+												<p className='line'></p>
+												<p
+													onClick={() => {
+														setOpen(true);
+														setIndex(idx);
+													}}
+												>
+													view
+												</p>
+											</div>
+										</div>
+									</article>
+								);
+							})
+						)}
+					</Masonry>
+				</section>
+			</Layout>
+			<Modal Open={Open} setOpen={setOpen}>
+				{Pics.length !== 0 && (
+					<img src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`} alt={Pics[Index].title} />
+				)}
+			</Modal>
+		</>
 	);
 }

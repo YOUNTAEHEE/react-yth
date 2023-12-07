@@ -1,0 +1,16 @@
+.Menu {
+	width: 80vw;
+	height: 100vh;
+	background: var(--pointColor);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5;
+
+		h2 {
+			color: var(--onlyWhiteColor);
+      display: block;
+      text-align: center;
+      padding: 20px;
+		}
+}

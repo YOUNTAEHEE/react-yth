@@ -1,0 +1,62 @@
+.Detail {
+	h2 {
+		font-size: var(--titSize);
+		margin-bottom: 5vh;
+	}
+	.videoBox {
+		width: 100%;
+		height: 70vh;
+		margin-bottom: 5vh;
+		iframe {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	h3 {
+		font-size: 1.3rem;
+		margin-bottom: 1.5vh;
+	}
+}
+.tablet,
+.mobile {
+	.Detail {
+		h2 {
+			font-size: var(--midSize);
+		
+		}
+		.videoBox {
+			height: 50vmax;
+			margin-bottom: 4vh;
+		
+		}
+		h3 {
+			font-size: 1rem;
+			margin-bottom: 1vh;
+		}
+    p{
+      font-size: 0.8rem;
+    }
+	}
+}
+
+.mobile {
+	.Detail {
+		h2 {
+			font-size: var(--midSize);
+		
+		}
+		.videoBox {
+			height: 20vmax;
+			margin-bottom: 3vh;
+		
+		}
+		h3 {
+			font-size: 0.9rem;
+			margin-bottom: 1vh;
+		}
+    p{
+      font-size: 0.7rem;
+    }
+	}
+}
