@@ -1,0 +1,112 @@
+.Gallery {
+	--num: 4;
+	.controls {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding: 20px 5px;
+		.btnSet {
+			display: flex;
+			gap: 15px;
+			button {
+				background-color: transparent;
+				border: none;
+				cursor: pointer;
+				border-bottom: 1px solid rgba(var(--baseColor-code), 0.3);
+				padding-bottom: 6px;
+				color: rgba(var(--baseColor-code), 0.3);
+				&:hover {
+					transition: color 1s;
+					border-bottom: 1px solid rgba(var(--baseColor-code), 0.7);
+					color: rgba(var(--baseColor-code), 0.7);
+				}
+				&.on {
+					border-bottom: 1px solid rgba(var(--baseColor-code), 0.7);
+					color: rgba(var(--baseColor-code), 0.7);
+				}
+			}
+		}
+		form {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			input {
+				width: 120px;
+				border: none;
+				background: transparent;
+				border-bottom: 1px solid rgba(var(--baseColor-code), 0.3);
+				padding-bottom: 6px;
+				outline: 0;
+				color: var(--baseColor);
+				&:focus {
+					transition: 1s;
+					border-bottom: 1px solid rgba(var(--baseColor-code), 0.7);
+				}
+			}
+			button {
+				background-color: transparent;
+				border: none;
+				font-size: 1.1rem;
+				color: rgba(var(--baseColor-code), 0.7);
+				cursor: pointer;
+			}
+		}
+	}
+	.frameWrap {
+		.frame {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			gap: var(--gap);
+			justify-content: flex-start;
+			article {
+				position: relative;
+				width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
+
+				.pic {
+					width: 100%;
+					img {
+						width: 100%;
+					}
+				}
+				.txt {
+					width: 80%;
+					padding: 15px 20px 15px 0;
+					background: rgba(var(--whiteColor-code), 0.9);
+					transform: translate(0, -65px);
+					bottom: 0;
+					left: 0;
+					i {
+						width: 80%;
+						font-size: 0.8rem;
+						color: var(--pointColor);
+						opacity: 0.9;
+						cursor: pointer;
+					}
+					h2 {
+						width: 80%;
+						font-size: 1.2rem;
+						font-weight: normal;
+						margin-bottom: 10px;
+					}
+					.viewBox {
+						display: flex;
+						align-items: center;
+						gap: 7px;
+						cursor: pointer;
+
+						.line {
+							height: 1px;
+							width: 25px;
+							background-color: rgba(var(--baseColor-code), 0.2);
+						}
+						p {
+							font-size: 0.8rem;
+							color: rgba(var(--baseColor-code), 0.8);
+						}
+					}
+				}
+			}
+		}
+	}
+}
