@@ -9,12 +9,20 @@ export default function Community() {
 		if (data) return JSON.parse(data);
 		else return [];
 	};
+
 	const [Post, setPost] = useState(getLocalData());
+	const [CurNum, setCurNum] = useState(0);
+	const [PageNum, setPageNum] = useState(0);
+
 	const editMode = useRef(false);
 	const refEditTit = useRef(null);
 	const refEditCon = useRef(null);
 	const refTit = useRef(null);
 	const refCon = useRef(null);
+	const len = useRef(0);
+	const pageNum = useRef(0);
+	const perNum = useRef(6);
+
 	//취소
 	const resetPost = () => {
 		refTit.current.value = '';
@@ -66,54 +74,91 @@ export default function Community() {
 		setPost(Post.filter((_, idx) => delIndex !== idx));
 	};
 
-	const disableUpdate = useEffect(() => {
+	const disableUpdate =(editIndex)=>{
+		editMode.current =false;
+		setPost(
+			Post.map((el, idx)=>{
+				if(editIndex === idx) el.enableUpdate = false; 
+				return el;
+			})
+		)
+	}
+	
+	useEffect(() => {
+		Post.map((el) => (el.enableUpdate = false));
 		localStorage.setItem('post', JSON.stringify(Post));
+		len.current = Post.length;
+
+		pageNum.current = len.current % perNum.current === 0 ? len.current / perNum.current : parseInt(len.current / perNum.current) + 1;
+		setPageNum(pageNum.current);
 	}, [Post]);
 	return (
 		<Layout title={'Community'}>
 			<div className='communityWrap'>
 				<div className='inputBox'>
-					<div>
-						<input type='text' placeholder='title' ref={refTit} />
-						<textarea cols='30' rows='5' placeholder='content' ref={refCon}></textarea>
+					<div className='txtBtnsBox'>
+						<div className='txtBox'>
+							<input type='text' placeholder='title' ref={refTit} />
+							<textarea cols='30' rows='5' placeholder='content' ref={refCon}></textarea>
+						</div>
+						<nav>
+							<button onClick={resetPost}>cancle</button>
+							<button onClick={createPost}>save</button>
+						</nav>
 					</div>
-					<nav>
-						<button onClick={resetPost}>cancle</button>
-						<button onClick={createPost}>save</button>
+					<nav className='pagination'>
+						{Array(PageNum)
+							.fill()
+							.map((_, idx) => {
+								return (
+									<button key={idx} onClick={() => idx !== CurNum && setCurNum(idx)} className={idx === CurNum ? 'on' : ''}>
+										{idx + 1}
+									</button>
+								);
+							})}
 					</nav>
 				</div>
+
 				<div className='showBox'>
 					{Post.map((el, idx) => {
-						if (el.enableUpdate) {
+						if (idx >= perNum.current * CurNum && idx < perNum.current * (CurNum + 1)) {
 							return (
 								<article key={el + idx}>
-									<div className='txt'>
-										<p>{el.month}</p>
-										<p>{el.day}</p>
-										<input type='text' defaultValue={el.title} ref={refEditTit} />
-										<textarea cols='30' rows='4' defaultValue={el.content} ref={refEditCon}></textarea>
-									</div>
-									<nav>
-										<button onClick={() => disableUpdate(idx)}>cancle</button>
-										<button onClick={() => updatePost(idx)}>save</button>
-									</nav>
+									{el.enableUpdate ? (
+										<>
+											<div className='txt'>
+												<div>
+													<p>{el.month}</p>
+													<p>{el.day}</p>
+												</div>
+												<input type='text' defaultValue={el.title} ref={refEditTit} />
+												<textarea cols='30' rows='4' defaultValue={el.content} ref={refEditCon}></textarea>
+											</div>
+											<nav>
+												<button onClick={() => disableUpdate(idx)}>cancle</button>
+												<button onClick={() => updatePost(idx)}>update</button>
+											</nav>
+										</>
+									) : (
+										<>
+											<div className='txt'>
+												<div>
+													<p>{el.month}</p>
+													<p>{el.day}</p>
+												</div>
+												<h2>{el.title}</h2>
+												<p>{el.content}</p>
+											</div>
+											<nav>
+												<button onClick={() => enableUpdate(idx)}>edit</button>
+												<button onClick={() => deletePost(idx)}>delete</button>
+											</nav>
+										</>
+									)}
 								</article>
 							);
 						} else {
-							return (
-								<article key={el + idx}>
-									<div className='txt'>
-										<p>{el.month}</p>
-										<p>{el.day}</p>
-										<h2>{el.title}</h2>
-										<p>{el.content}</p>
-									</div>
-									<nav>
-										<button onClick={() => enableUpdate(idx)}>edit</button>
-										<button onClick={() => deletePost(idx)}>cancle</button>
-									</nav>
-								</article>
-							);
+							return null;
 						}
 					})}
 				</div>
