@@ -101,7 +101,7 @@ export default function Contact() {
     marker.current.setMap(mapInstance.current);
   }, []);
   return (
-    <Layout className="Contact">
+    <Layout title={'Contact'}>
       <div className="con1Wrap">
         <div className="con1">
           <p>Get in Touch</p>
