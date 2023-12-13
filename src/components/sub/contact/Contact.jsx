@@ -48,7 +48,8 @@ export default function Contact() {
   const kakao = useRef(window.kakao);
   const [Index, setIndex] = useState(0);
   const [Traffic, setTraffic] = useState(false);
-  
+  const [View, setView] = useState(false);
+
   const marker = useRef(null);
   const mapFrame = useRef(null);
   const viewFrame = useRef(null);
@@ -91,7 +92,22 @@ export default function Contact() {
       mapInfo.current[Index].imgOpt
     ),
   });
-
+  const roadview = () => {
+    new kakao.current.maps.RoadviewClient().getNearestPanoId(
+      mapInfo.current[Index].latlng,
+      50,
+      (panoId) => {
+        new kakao.current.maps.Roadview(viewFrame.current).setPanoId(
+          panoId,
+          mapInfo.current[Index].latlng
+        );
+      }
+    );
+  };
+  const setCenter = () => {
+    mapInstance.current.setCenter(mapInfo.current[Index].latlng);
+    roadview();
+  };
   useEffect(() => {
     mapFrame.current.innerHTML = "";
     mapInstance.current = new kakao.current.maps.Map(mapFrame.current, {
@@ -99,45 +115,93 @@ export default function Contact() {
       level: 3,
     });
     marker.current.setMap(mapInstance.current);
-  }, []);
+    setTraffic(false);
+    setView(false);
+    roadview();
+    //지도 타입 컨트롤러 추가
+    mapInstance.current.addControl(
+      new kakao.current.maps.MapTypeControl(),
+      kakao.current.maps.ControlPosition.TOPRIGHT
+    );
+
+    //지도 줌 컨트롤러 추가
+    mapInstance.current.addControl(
+      new kakao.current.maps.ZoomControl(),
+      kakao.current.maps.ControlPosition.RIGHT
+    );
+    //휠에 맵 줌 기능 비활성화
+    mapInstance.current.setZoomable(false);
+    window.addEventListener("resize", setCenter);
+    return () => window.removeEventListener("resize", setCenter);
+  }, [Index]);
+  useEffect(() => {
+    Traffic
+      ? mapInstance.current.addOverlayMapTypeId(
+          kakao.current.maps.MapTypeId.TRAFFIC
+        )
+      : mapInstance.current.removeOverlayMapTypeId(
+          kakao.current.maps.MapTypeId.TRAFFIC
+        );
+  }, [Traffic]);
+
   return (
-    <Layout title={'Contact'}>
+    <Layout title={"Contact"}>
       <div className="con1Wrap">
         <div className="con1">
-          <p>Get in Touch</p>
-          <p>Please get in touch if you have any questions about YOUN.</p>
+          <div>
+            <p>Get in Touch</p>
+            <p>Please get in touch if you have any questions about YOUN.</p>
+          </div>
+          <section className="iconBoxs">
+            <article>
+              <div>
+                <IoMailSharp />
+              </div>
+              <p>abcdf@naver.com</p>
+            </article>
+            <article>
+              <div>
+                <FaPhoneAlt />
+              </div>
+              <p>123-4567-8901</p>
+            </article>
+            <article>
+              <div>
+                <IoIosHome />
+              </div>
+              <p>175 Varrick Street, 3rd Floor. New York, NY 10014</p>
+            </article>
+          </section>
         </div>
         <div id="mailSection">
           <form ref={form} onSubmit={sendEmail}>
-            <label>Name</label>
-            <input type="text" name="user_name" />
-            <label>Email</label>
-            <input type="email" name="user_email" />
-            <label>Message</label>
-            <textarea name="message" />
-            <input type="submit" value="Send" />
+            <input type="text" name="user_name" placeholder="name" />
+            <input type="email" name="user_email" placeholder="email" />
+            <textarea name="message" placeholder="message" />
+            <input className="submitBtn" type="submit" value="Send" />
           </form>
         </div>
       </div>
-      <section>
-        <article>
-          <IoMailSharp />
-          abcdf@naver.com
-        </article>
-        <article>
-          <FaPhoneAlt />
-          123-4567-8901
-        </article>
-        <article>
-          <IoIosHome />
-          175 Varrick Street, 3rd Floor. New York, NY 10014
-        </article>
-      </section>
+
       <div id="mapSection">
-        <div className="controlBox">
-          <nav className="branch"></nav>
-        </div>
-        <nav className="info">
+        <section className="tab">
+          <article
+            className={`mapBox ${View ? "" : "on"}`}
+            ref={mapFrame}
+          ></article>
+          <article
+            className={`viewBox ${View ? "on" : ""}`}
+            ref={viewFrame}
+          ></article>
+        </section>
+        <nav className="controlBox">
+          {mapInfo.current.map((el, idx) =>
+            //prettier-ignore
+            <button key={idx} onClick={() => setIndex(idx)} className={`mapBtn ${idx === Index ? 'on' : ''}`}>{el.title}</button>
+          )}
+          <button onClick={() => setView(!View)}>
+            {View ? "map" : "road view"}
+          </button>
           <button
             onClick={() => {
               setTraffic(!Traffic);
@@ -145,13 +209,8 @@ export default function Contact() {
           >
             {Traffic ? "Traffic off" : "Traffic ON"}
           </button>
-          <button></button>
-          <button></button>
+          <button onClick={setCenter}>위치 초기화</button>
         </nav>
-        <section className="tab">
-          <article className="mapBox" ref={mapFrame}></article>
-          <article className="viewBox" ref={viewFrame}></article>
-        </section>
       </div>
     </Layout>
   );

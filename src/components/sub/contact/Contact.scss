@@ -1,12 +1,150 @@
 .Contact {
   .con1Wrap {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
     .con1 {
-      p:nth-of-type(1) {
-        font-size: var(--titSize);
+      width: 54%;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+      padding-right: 45px;
+      > div {
+        width: 100%;
+        p:nth-of-type(1) {
+          font-size: var(--titSize);
+          margin-bottom: 20px;
+          font-weight: bold;
+        }
+        p:nth-of-type(2) {
+          font-size: var(--bodySize);
+        }
       }
-      p:nth-of-type(2) {
-        font-size: var(--bodySize);
+      .iconBoxs {
+        width: 100%;
+        display: flex;
+        gap: 20px;
+        > article {
+          border: 1px solid rgba(var(--baseColor-code), 0.15);
+          width: calc(100% / 3);
+          height: 150px;
+          padding: 30px 10px;
+          display: flex;
+          flex-wrap: wrap;
+
+          div {
+            width: 100%;
+            font-size: 1.3rem;
+            text-align: center;
+            color: rgba(var(--baseColor-code), 0.6);
+          }
+          p {
+            width: 100%;
+            font-size: 0.8rem;
+            text-align: center;
+            color: rgba(var(--baseColor-code), 0.6);
+          }
+        }
       }
+    }
+    #mailSection {
+      width: 46%;
+      height: 50vh;
+      padding: 45px;
+      background: rgba(var(--baseColor-code), 0.04);
+      form {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        align-content: space-between;
+        gap: 15px;
+
+        input {
+          width: 100%;
+          height: 45px;
+          font-family: "arial";
+          padding: 10px;
+          outline: 0;
+          border: none;
+          background-color: var(--whiteColor);
+        }
+
+        textarea {
+          width: 100%;
+          height: 20vh;
+          resize: none;
+          font-family: "arial";
+          padding: 10px;
+          outline: 0;
+          background-color: var(--whiteColor);
+          border: none;
+        }
+        .submitBtn {
+          width: 150px;
+          border: none;
+          background: rgba(var(--pointColor-code), 0.2);
+          color: rgba(var(----darkLightPointFontColor-code), 0.7);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  #mapSection {
+    .tab {
+      width: 100%;
+      height: 50vh;
+      position: relative;
+      background-color: var(--baseColor);
+      .mapBox,
+      .viewBox {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 1;
+        &.on {
+          z-index: 2;
+          opacity: 1;
+        }
+      }
+    }
+    .controlBox {
+      .mapBtn {
+        width: calc(100% / 6);
+        height: 45px;
+        border: none;
+        background: rgba(var(--baseColor-code), 0.08);
+        cursor: pointer;
+        color: rgba(var(--baseColor-code), 0.6);
+        padding: 10px;
+
+        &.on {
+          background: rgba(var(--pointColor-code), 0.08);
+          cursor: pointer;
+          color: rgba(var(----darkLightPointFontColor-code), 0.6);
+        }
+      }
+
+      button {
+        width: calc(100% / 6);
+        height: 45px;
+        border: none;
+
+        background: rgba(var(--baseColor-code), 0.04);
+        cursor: pointer;
+        color: rgba(var(--baseColor-code), 0.4);
+        padding: 10px;
+      }
+    }
+  }
+}
+.dark {
+  .Contact {
+    .tab {
+      filter: saturate(0) invert(1) contrast(0.7);
     }
   }
 }
