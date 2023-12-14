@@ -23,10 +23,17 @@
       .iconBoxs {
         width: 100%;
         display: flex;
-        gap: 20px;
+        flex-wrap: wrap;
+        align-content: space-between;
+        --articleGap: 20px;
+        --articleNum: 3;
+        gap: var(--articleGap);
         > article {
           border: 1px solid rgba(var(--baseColor-code), 0.15);
-          width: calc(100% / 3);
+          width: calc(
+            (100% - (var(--articleGap) * (var(--articleNum) - 1))) /
+              var(--articleNum)
+          );
           height: 150px;
           padding: 30px 10px;
           display: flex;
@@ -113,6 +120,7 @@
     }
     .controlBox {
       display: flex;
+      flex-wrap: wrap;
       align-content: center;
       .mapBtn {
         width: calc(100% / 6);
@@ -147,6 +155,70 @@
   .Contact {
     .tab {
       filter: saturate(0) invert(1) contrast(0.7);
+    }
+  }
+}
+.tablet,
+.mobile {
+  .Contact {
+    .con1Wrap {
+      flex-wrap: wrap;
+      align-content: space-between;
+      .con1 {
+        width: 100%;
+
+        padding-right: 0;
+        > div {
+          margin-bottom: 40px;
+        }
+        .iconBoxs {
+          width: 100%;
+          margin-bottom: 40px;
+        }
+      }
+      #mailSection {
+        width: 100%;
+      }
+    }
+    #mapSection {
+      .controlBox {
+        --mapBtnNum: 3;
+        .mapBtn {
+          width: calc(100% / var(--mapBtnNum));
+        }
+
+        button {
+          width: calc(100% / var(--mapBtnNum));
+        }
+      }
+    }
+  }
+}
+.mobile {
+  .Contact {
+    .con1Wrap {
+      .iconBoxs {
+        --articleGap: 20px;
+        --articleNum: 1;
+      }
+      #mailSection {
+        width: 100%;
+        .submitBtn {
+          width: 100%;
+        }
+      }
+    }
+    #mapSection {
+      .controlBox {
+        --mapBtnNum: 1;
+        .mapBtn {
+          width: calc(100% / var(--mapBtnNum));
+        }
+
+        button {
+          width: calc(100% / var(--mapBtnNum));
+        }
+      }
     }
   }
 }
