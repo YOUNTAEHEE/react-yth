@@ -1,0 +1,95 @@
+{
+  "dummyPosts": [
+    {
+      "month": "12",
+      "day": "15",
+      "title": "13",
+      "content": "13",
+      "enableUpdate": false
+    },
+    {
+      "month": "12",
+      "day": "15",
+      "title": "12",
+      "content": "12",
+      "enableUpdate": false
+    },
+    {
+      "month": "12",
+      "day": "14",
+      "title": "11",
+      "content": "11",
+      "enableUpdate": false
+    },
+    {
+      "month": "12",
+      "day": "14",
+      "title": "10",
+      "content": "10",
+      "enableUpdate": false
+    },
+    {
+      "month": "12",
+      "day": "13",
+      "title": "9",
+      "content": "9",
+      "enableUpdate": false
+    },
+    {
+      "month": "11",
+      "day": "29",
+      "title": "8",
+      "content": "8",
+      "enableUpdate": false
+    },
+    {
+      "month": "11",
+      "day": "24",
+      "title": "7",
+      "content": "7",
+      "enableUpdate": false
+    },
+    {
+      "month": "11",
+      "day": "15",
+      "title": "6",
+      "content": "6",
+      "enableUpdate": false
+    },
+    {
+      "month": "11",
+      "day": "13",
+      "title": "5",
+      "content": "5",
+      "enableUpdate": false
+    },
+    {
+      "month": "11",
+      "day": "09",
+      "title": "4",
+      "content": "4",
+      "enableUpdate": false
+    },
+    {
+      "month": "11",
+      "day": "05",
+      "title": "3",
+      "content": "3",
+      "enableUpdate": false
+    },
+    {
+      "month": "10",
+      "day": "12",
+      "title": "2",
+      "content": "2",
+      "enableUpdate": false
+    },
+    {
+      "month": "10",
+      "day": "05",
+      "title": "1",
+      "content": "1",
+      "enableUpdate": false
+    }
+  ]
+}
