@@ -31,7 +31,7 @@
               textarea {
                 width: 100%;
                 padding: 10px 0px 10px 5px;
-
+                color: rgba(var(--baseColor-code), 0.8);
                 background-color: transparent;
                 border: 1px solid rgba(var(--baseColor-code), 0.3);
               }
@@ -39,8 +39,13 @@
                 width: 100%;
                 border: none;
                 background-color: transparent;
-                padding: 10px 0px 10px 5px;
+                padding: 10px 10px 10px 5px;
                 border: 1px solid rgba(var(--baseColor-code), 0.3);
+                color: rgba(var(--baseColor-code), 0.8);
+                option {
+                  color: rgba(var(--baseColor-code), 0.8);
+                  background-color: var(--whiteColor);
+                }
               }
 
               label {
@@ -58,7 +63,7 @@
             width: 100%;
             text-align: center;
             .bottomTdBtns {
-         padding-top: 75px;
+              padding-top: 75px;
               input[type="reset"] {
                 background: rgba(var(--baseColor-code), 0.08);
                 margin-right: 20px;
