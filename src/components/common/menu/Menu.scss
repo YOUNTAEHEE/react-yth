@@ -1,16 +1,51 @@
 .Menu {
-	width: 80vw;
-	height: 100vh;
-	background: var(--pointColor);
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 5;
+  width: 80vw;
+  height: 100vh;
+  background: var(--menuBgColor);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
 
-		h2 {
-			color: var(--onlyWhiteColor);
+  h2 {
+    cursor: pointer;
+    color: rgba(var(--menuFontBgColor-code), 1);
+    display: block;
+    text-align: left;
+    padding: 20px 0 20px 25px;
+    border-bottom: 1px solid transparent;
+    border-image: radial-gradient(
+        rgba(var(--menuFontBgColor-code), 0.3) 90%,
+        transparent
+      )
+      1;
+  }
+  ul {
+    a {
       display: block;
-      text-align: center;
-      padding: 20px;
-		}
+      padding: 25px 0 25px 25px;
+      cursor: pointer;
+      color: rgba(var(--menuFontBgColor-code), 0.8);
+      &.on {
+        background-color: rgba(var(--pointColor-code), 0.8);
+        color: var(--whiteColor);
+      }
+    }
+  }
+}
+.dark {
+  .Menu {
+    background: #222;
+    h2 {
+      color: #fff;
+    }
+    ul {
+      a {
+        color: #999;
+        &.on {
+          color: #fff;
+        }
+      }
+    }
+  }
 }
