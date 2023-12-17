@@ -1,12 +1,12 @@
 .Members {
   .membersWrap {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
-    align-content: space-between;
-    justify-content: center;
+
+    justify-content: space-between;
     h2 {
       width: 100%;
-      margin-bottom: 5vh;
       font-size: var(--titSize);
     }
     .formBox {
@@ -16,13 +16,15 @@
         tbody {
           tr {
             td {
-              padding: 30px 15px 0px 0px;
-
+              padding: 55px 5px 10px;
+              position: relative;
               p {
                 font-size: 0.7rem;
                 color: var(--darkLightPointColor);
                 font-family: "돋움";
-                margin-top: 8px;
+                bottom: -20px;
+                left: 5px;
+                position: absolute;
               }
               input[type="text"],
               input[type="password"],
@@ -56,6 +58,7 @@
             width: 100%;
             text-align: center;
             .bottomTdBtns {
+         padding-top: 75px;
               input[type="reset"] {
                 background: rgba(var(--baseColor-code), 0.08);
                 margin-right: 20px;
