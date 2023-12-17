@@ -175,8 +175,11 @@ export default function Contact() {
         </div>
         <div id="mailSection">
           <form ref={form} onSubmit={sendEmail}>
+            <label>Name</label>
             <input type="text" name="user_name" placeholder="name" />
+            <label>Email</label>
             <input type="email" name="user_email" placeholder="email" />
+            <label>Message</label>
             <textarea name="message" placeholder="message" />
             <input className="submitBtn" type="submit" value="Send" />
           </form>
