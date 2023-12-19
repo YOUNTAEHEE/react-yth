@@ -1,9 +1,7 @@
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./Footer.scss";
 import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
 export default function Footer() {
-  const facebookURL = "https://www.facebook.com/";
-  const twitterURL = "https://twitter.com/";
-  const youtubeURL = "https://www.youtube.com/";
   return (
     <footer className="Footer">
       <div className="footerLeft">
@@ -15,26 +13,23 @@ export default function Footer() {
         <p>2023 YOUN &copy; All Rights Reserved.</p>
 
         <ul>
-          <li
-            onClick={() => {
-              window.open(facebookURL);
-            }}
-          >
-            <FaFacebookF />
+          <li>
+            <Link
+              to={{ pathname: "https://www.facebook.com/" }}
+              target="_blank"
+            >
+              <FaFacebookF />
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              window.open(twitterURL);
-            }}
-          >
-            <FaTwitter />
+          <li>
+            <Link to={{ pathname: "https://twitter.com/" }} target="_blank">
+              <FaTwitter />
+            </Link>
           </li>
-          <li
-            onClick={() => {
-              window.open(youtubeURL);
-            }}
-          >
-            <FaYoutube />
+          <li>
+            <Link to={{ pathname: "https://www.youtube.com/" }} target="_blank">
+              <FaYoutube />
+            </Link>
           </li>
         </ul>
       </div>
