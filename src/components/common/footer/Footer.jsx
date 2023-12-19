@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import "./Footer.scss";
 import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
 export default function Footer() {
@@ -14,22 +13,31 @@ export default function Footer() {
 
         <ul>
           <li>
-            <Link
-              to={{ pathname: "https://www.facebook.com/" }}
+            <a
+              href="https://www.facebook.com/"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <FaFacebookF />
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to={{ pathname: "https://twitter.com/" }} target="_blank">
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaTwitter />
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to={{ pathname: "https://www.youtube.com/" }} target="_blank">
+            <a
+              href="https://www.youtube.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaYoutube />
-            </Link>
+            </a>
           </li>
         </ul>
       </div>
