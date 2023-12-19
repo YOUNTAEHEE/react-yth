@@ -1,16 +1,25 @@
-import './Modal.scss';
-import { IoMdClose } from 'react-icons/io';
-export default function Modal({ children, Open, setOpen }) {
-	return (
-		<>
-			{Open && (
-				<aside className='Modal'>
-					<div className='con'>{children}</div>
-					<div className='close' onClick={() => setOpen(false)}>
-						<IoMdClose />
-					</div>
-				</aside>
-			)}
-		</>
-	);
+import { useDispatch, useSelector } from "react-redux";
+import "./Modal.scss";
+import { IoMdClose } from "react-icons/io";
+import * as types from "../../../redux/action";
+export default function Modal({ children }) {
+  const dispatch = useDispatch();
+  const Open = useSelector((store) => store.modalReducer.modal);
+  return (
+    <>
+      {Open && (
+        <aside className="Modal">
+          <div className="con">{children}</div>
+          <div
+            className="close"
+            onClick={() =>
+              dispatch({ type: types.MODAL.start, payload: false })
+            }
+          >
+            <IoMdClose />
+          </div>
+        </aside>
+      )}
+    </>
+  );
 }
