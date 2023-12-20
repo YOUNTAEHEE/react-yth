@@ -1,10 +1,11 @@
 import "./Contact.scss";
 import Layout from "../../common/layout/Layout";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { IoMailSharp } from "react-icons/io5";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosHome } from "react-icons/io";
 import emailjs from "@emailjs/browser";
+import { useThrottle } from "../../../hooks/useThrottle";
 export default function Contact() {
   const form = useRef();
   const resetForm = () => {
@@ -92,7 +93,7 @@ export default function Contact() {
       mapInfo.current[Index].imgOpt
     ),
   });
-  const roadview = () => {
+  const roadview = useCallback(() => {
     new kakao.current.maps.RoadviewClient().getNearestPanoId(
       mapInfo.current[Index].latlng,
       50,
@@ -103,13 +104,16 @@ export default function Contact() {
         );
       }
     );
-  };
-  const setCenter = () => {
+  }, [Index]);
+  const setCenter = useCallback(() => {
     mapInstance.current.setCenter(mapInfo.current[Index].latlng);
-    roadview();
-  };
+    //roadview();
+  }, [Index]);
+
+  const throttledSetCenter = useThrottle(setCenter);
   useEffect(() => {
     mapFrame.current.innerHTML = "";
+    viewFrame.current.innerHTML = "";
     mapInstance.current = new kakao.current.maps.Map(mapFrame.current, {
       center: mapInfo.current[Index].latlng,
       level: 3,
@@ -117,7 +121,7 @@ export default function Contact() {
     marker.current.setMap(mapInstance.current);
     setTraffic(false);
     setView(false);
-    roadview();
+    //roadview();
     //지도 타입 컨트롤러 추가
     mapInstance.current.addControl(
       new kakao.current.maps.MapTypeControl(),
@@ -131,9 +135,9 @@ export default function Contact() {
     );
     //휠에 맵 줌 기능 비활성화
     mapInstance.current.setZoomable(false);
-    window.addEventListener("resize", setCenter);
-    return () => window.removeEventListener("resize", setCenter);
-  }, [Index]);
+    window.addEventListener("resize", throttledSetCenter);
+    return () => window.removeEventListener("resize", throttledSetCenter);
+  }, [Index, throttledSetCenter]);
   useEffect(() => {
     Traffic
       ? mapInstance.current.addOverlayMapTypeId(
@@ -143,7 +147,9 @@ export default function Contact() {
           kakao.current.maps.MapTypeId.TRAFFIC
         );
   }, [Traffic]);
-
+  useEffect(() => {
+    View && viewFrame.current.children.length === 0 && roadview();
+  }, [View, roadview]);
   return (
     <Layout title={"Contact"}>
       <div className="con1Wrap">
