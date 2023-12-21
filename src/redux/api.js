@@ -8,10 +8,7 @@ export const fetchActive = async () => {
 
 export const fetchMember = async () => {
   const data = await fetch(`${path}/DB/departmentCon2.json`);
-  console.log('api d',data);
   const json = await data.json();
-  console.log('api',json);
-  
   return json;
 };
 

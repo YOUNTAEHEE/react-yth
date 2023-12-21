@@ -8,10 +8,8 @@ function* callMember() {
 function* returnMember() {
   try {
     const response = yield call(fetchMember);
-    console.log("returnMember 사가에서의 API 응답:", response);
     yield put({ type: types.MEMBER.success, payload: response.Member });
   } catch (err) {
-    console.error("returnMember 사가에서 오류:", err);
     yield put({ type: types.MEMBER.fail, payload: err });
   }
 }
