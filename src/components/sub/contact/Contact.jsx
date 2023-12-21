@@ -135,9 +135,13 @@ export default function Contact() {
     );
     //휠에 맵 줌 기능 비활성화
     mapInstance.current.setZoomable(false);
+  }, [Index]);
+
+  useEffect(() => {
     window.addEventListener("resize", throttledSetCenter);
     return () => window.removeEventListener("resize", throttledSetCenter);
-  }, [Index, throttledSetCenter]);
+  }, [throttledSetCenter]);
+
   useEffect(() => {
     Traffic
       ? mapInstance.current.addOverlayMapTypeId(
