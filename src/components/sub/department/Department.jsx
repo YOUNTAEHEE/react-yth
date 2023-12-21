@@ -3,11 +3,13 @@ import Layout from "../../common/layout/Layout";
 import "./Department.scss";
 import { useSelector } from "react-redux";
 export default function Department() {
-  const { activeReducer, memberReducer } = useSelector((store) => store);
-  const Active = Object.values(activeReducer.active)[0];
-  const MemberData = Object.values(memberReducer.member)[0];
-
   const path = useRef(process.env.PUBLIC_URL);
+  const { activeReducer, memberReducer } = useSelector((store) =>
+    store
+  );
+  const Active = Object.values(activeReducer.active);
+  const MemberData = Object.values(memberReducer.member);
+  console.log("depart", memberReducer);
   return (
     <Layout title={"Department"}>
       <section className="memberBox">

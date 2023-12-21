@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./Menu.scss";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import * as types from "../../../redux/action";
+import * as types from "../../../redux/actionType";
 export default function Menu() {
   const dispatch = useDispatch();
   const Open = useSelector((store) => store.menuReducer.menu);

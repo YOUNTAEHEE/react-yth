@@ -5,10 +5,11 @@ import Masonry from "react-masonry-component";
 import { useCustomText } from "../../../hooks/useText";
 import { LuSearch } from "react-icons/lu";
 import Modal from "../../common/modal/Modal";
-import { useDispatch } from "react-redux";
-import * as types from "../../../redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import * as types from "../../../redux/actionType";
 export default function Gallery() {
   const dispatch = useDispatch();
+  const Pics = useSelector((store) => store.flickrReducer.flickr);
   const [Index, setIndex] = useState(0);
   const searched = useRef(false);
 
@@ -19,7 +20,6 @@ export default function Gallery() {
   const refNav = useRef(null);
 
   const refFrmaeWrap = useRef(null);
-  const [Pics, setPics] = useState([]);
   const shortenText = useCustomText("shorten");
 
   const activateBtn = (e) => {
@@ -32,7 +32,7 @@ export default function Gallery() {
     if (e.target.classList.contains("on")) return;
     isUser.current = "";
     activateBtn(e);
-    fetchFlickr({ type: "interest" });
+    dispatch({ type: types.FLICKR.start, opt: { type: "interest" } });
   };
 
   const handleMine = (e) => {
@@ -43,7 +43,10 @@ export default function Gallery() {
       return;
     isUser.current = myID.current;
     activateBtn(e);
-    fetchFlickr({ type: "user", id: myID.current });
+    dispatch({
+      type: types.FLICKR.start,
+      opt: { type: "user", id: myID.current },
+    });
   };
   const handleUser = (e) => {
     console.log("handleMine called");
@@ -52,7 +55,10 @@ export default function Gallery() {
     if (isUser.current) return;
     isUser.current = e.target.innerText;
     activateBtn();
-    fetchFlickr({ type: "user", id: e.target.innerText });
+    dispatch({
+      type: types.FLICKR.start,
+      opt: { type: "user", id: e.target.innerText },
+    });
   };
   const handleSearch = (e) => {
     console.log("handleMine called");
@@ -64,32 +70,15 @@ export default function Gallery() {
     const keyword = e.target.children[0].value;
     if (!keyword.trim()) return;
     e.target.children[0].value = "";
-    fetchFlickr({ type: "search", keyword: keyword });
+    dispatch({
+      type: types.FLICKR.start,
+      opt: { type: "search", keyword: keyword },
+    });
     searched.current = true;
   };
-  const fetchFlickr = async (opt) => {
-    const num = 50;
-    const flickr_api = process.env.REACT_APP_FLICKR_API;
-    const baseURL = `https://www.flickr.com/services/rest/?api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
-    const method_interest = "flickr.interestingness.getList";
-    const method_user = "flickr.people.getPhotos";
-    const method_search = "flickr.photos.search";
-    const interestURL = `${baseURL}${method_interest}`;
-    const userURL = `${baseURL}${method_user}&user_id=${opt.id}`;
-    const searchURL = `${baseURL}${method_search}&tags=${opt.keyword}`;
 
-    let url = "";
-    opt.type === "user" && (url = userURL);
-    opt.type === "interest" && (url = interestURL);
-    opt.type === "search" && (url = searchURL);
-    const data = await fetch(url);
-    const json = await data.json();
-    console.log(json);
-    setPics(json.photos.photo);
-  };
   useEffect(() => {
     refFrmaeWrap.current.style.setProperty("--gap", gap.current + "px");
-    fetchFlickr({ type: "user", id: myID.current });
   }, []);
   return (
     <>

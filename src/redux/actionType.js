@@ -13,15 +13,17 @@ export const YOUTUBE = {
   success: "YOUTUBE_SUCCESS",
   fail: "YOUTUBE_FAIL",
 };
+export const FLICKR = {
+  start: "FLICKR_START",
+  success: "FLICKR_SUCCESS",
+  fail: "FLICKR_FAIL",
+};
 export const MENU = {
   start: "MENU_START",
-
 };
 export const DARK = {
   start: "DARK_START",
-
 };
 export const MODAL = {
   start: "MODAL_START",
-
 };

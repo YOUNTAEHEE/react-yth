@@ -15,43 +15,20 @@ import Menu from "./components/common/menu/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { useMedia } from "./hooks/useMedia";
 import Detail from "./components/sub/youtube/Detail";
-import * as types from "./redux/action";
+import * as types from "./redux/actionType";
 function App() {
   const dispatch = useDispatch();
   const Dark = useSelector((store) => store.darkReducer.dark);
 
-  const path = useRef(process.env.PUBLIC_URL);
-
-  const fetchActive = useCallback(async () => {
-    const data = await fetch(`${path.current}/DB/departmentCon1.json`);
-    const json = await data.json();
-    dispatch({ type: types.ACTIVE.success, payload: json });
-  }, [dispatch]);
-
-  const fetchMember = useCallback(async () => {
-    const data = await fetch(`${path.current}/DB/departmentCon2.json`);
-    const json = await data.json();
-    dispatch({ type: types.MEMBER.success, payload: json });
-  }, [dispatch]);
-
-  const fetchYoutube = useCallback(async () => {
-    const api_key = process.env.REACT_APP_YOUTUBE_API;
-    const pid = process.env.REACT_APP_YOUTUBE_LIST;
-    const num = 11;
-    const baseURL = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
-    try {
-      const data = await fetch(baseURL);
-      const json = await data.json();
-      dispatch({ type: types.YOUTUBE.success, payload: json.items });
-    } catch (err) {
-      dispatch({ type: types.YOUTUBE.fail, payload: err });
-    }
-  }, [dispatch]);
   useEffect(() => {
-    fetchActive();
-    fetchMember();
-    fetchYoutube();
-  }, [fetchActive, fetchMember, fetchYoutube]);
+    dispatch({ type: types.ACTIVE.start });
+    dispatch({ type: types.MEMBER.start });
+    dispatch({ type: types.YOUTUBE.start });
+    dispatch({
+      type: types.FLICKR.start,
+      opt: { type: "user", id: "197119297@N02" }
+    });
+  }, [dispatch]);
   return (
     <div className={`wrap ${Dark ? "dark" : ""} ${useMedia()}`}>
       <Header />

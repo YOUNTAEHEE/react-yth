@@ -2,7 +2,7 @@ import "./Header.scss";
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineMenu } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import * as types from "../../../redux/action";
+import * as types from "../../../redux/actionType";
 export default function Header() {
   const dispatch = useDispatch();
   const { menuReducer, darkReducer } = useSelector((store) => store);
