@@ -10,48 +10,25 @@ import Contact from "./components/sub/contact/Contact";
 import MainWrap from "./components/main/mainWrap/MainWrap";
 import "./globalStyles/Variables.scss";
 import "./globalStyles/Reset.scss";
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import Menu from "./components/common/menu/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { useMedia } from "./hooks/useMedia";
 import Detail from "./components/sub/youtube/Detail";
-import * as types from "./redux/action";
+import { fetchActive } from "./redux/activeSlice";
+import { fetchFlickr } from "./redux/flickrSlice";
+import { fetchMember } from "./redux/memberSlice";
+import { fetchYoutube } from "./redux/youtubeSlice";
 function App() {
   const dispatch = useDispatch();
-  const Dark = useSelector((store) => store.darkReducer.dark);
+  const Dark = useSelector((store) => store.dark.isDark);
 
-  const path = useRef(process.env.PUBLIC_URL);
-
-  const fetchActive = useCallback(async () => {
-    const data = await fetch(`${path.current}/DB/departmentCon1.json`);
-    const json = await data.json();
-    dispatch({ type: types.ACTIVE.success, payload: json });
-  }, [dispatch]);
-
-  const fetchMember = useCallback(async () => {
-    const data = await fetch(`${path.current}/DB/departmentCon2.json`);
-    const json = await data.json();
-    dispatch({ type: types.MEMBER.success, payload: json });
-  }, [dispatch]);
-
-  const fetchYoutube = useCallback(async () => {
-    const api_key = process.env.REACT_APP_YOUTUBE_API;
-    const pid = process.env.REACT_APP_YOUTUBE_LIST;
-    const num = 11;
-    const baseURL = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
-    try {
-      const data = await fetch(baseURL);
-      const json = await data.json();
-      dispatch({ type: types.YOUTUBE.success, payload: json.items });
-    } catch (err) {
-      dispatch({ type: types.YOUTUBE.fail, payload: err });
-    }
-  }, [dispatch]);
   useEffect(() => {
-    fetchActive();
-    fetchMember();
-    fetchYoutube();
-  }, [fetchActive, fetchMember, fetchYoutube]);
+    dispatch(fetchActive());
+    dispatch(fetchFlickr({ type: "user", id: "199625511@N07" }));
+    dispatch(fetchMember());
+    dispatch(fetchYoutube());
+  }, [dispatch]);
   return (
     <div className={`wrap ${Dark ? "dark" : ""} ${useMedia()}`}>
       <Header />

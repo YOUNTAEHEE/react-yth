@@ -2,13 +2,12 @@ import { useEffect } from "react";
 import "./Menu.scss";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import * as types from "../../../redux/action";
+import { menuClose } from "../../../redux/menuSlice";
 export default function Menu() {
   const dispatch = useDispatch();
-  const Open = useSelector((store) => store.menuReducer.menu);
+  const Open = useSelector((store) => store.menu.open);
   const closeMenu = () => {
-    window.innerWidth >= 1000 &&
-      dispatch({ type: types.MENU.start, payload: false });
+    window.innerWidth >= 1000 && dispatch(menuClose());
   };
   useEffect(() => {
     window.addEventListener("resize", closeMenu);
@@ -16,7 +15,7 @@ export default function Menu() {
   }, []);
   const close = () => {
     setTimeout(() => {
-      dispatch({ type: types.MENU.start, payload: false });
+      dispatch(menuClose());
     }, 200);
   };
   return (

@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 export default function Department() {
   const [Mounted, setMounted] = useState(true);
 
-  const { activeReducer, memberReducer } = useSelector((store) => store);
-  const Active = Object.values(activeReducer.active)[0];
-  const MemberData = Object.values(memberReducer.member)[0];
+  const { active, member } = useSelector((store) => store);
+  const Active = Object.values(active.data)[0];
+  const MemberData = Object.values(member.data)[0];
 
   const path = useRef(process.env.PUBLIC_URL);
 

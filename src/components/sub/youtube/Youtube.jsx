@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function Youtube() {
   const [Mounted, setMounted] = useState(true);
-  const Vids = useSelector((store) => store.youtubeReducer.youtube);
+  const Vids = useSelector((store) => store.youtube.data);
   const monthName = [
     "Jan",
     "Feb",
