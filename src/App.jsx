@@ -10,7 +10,7 @@ import Contact from "./components/sub/contact/Contact";
 import MainWrap from "./components/main/mainWrap/MainWrap";
 import "./globalStyles/Variables.scss";
 import "./globalStyles/Reset.scss";
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import Menu from "./components/common/menu/Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { useMedia } from "./hooks/useMedia";
@@ -21,13 +21,16 @@ function App() {
   const Dark = useSelector((store) => store.darkReducer.dark);
 
   useEffect(() => {
-    dispatch({ type: types.ACTIVE.start });
-    dispatch({ type: types.MEMBER.start });
-    dispatch({ type: types.YOUTUBE.start });
-    dispatch({
-      type: types.FLICKR.start,
-      opt: { type: "user", id: "197119297@N02" }
-    });
+    // dispatch({ type: types.ACTIVE.start });
+    // dispatch({ type: types.MEMBER.start });
+    // dispatch({ type: types.YOUTUBE.start });
+    // dispatch({
+    //   type: types.FLICKR.start,
+    //   opt: { type: "user", id: "197119297@N02" }
+    // });
+    ["MEMBER", "ACTIVE", "YOUTUBE", "FLICKR"].forEach((typeName) =>
+      dispatch({ type: types[typeName].start })
+    );
   }, [dispatch]);
   return (
     <div className={`wrap ${Dark ? "dark" : ""} ${useMedia()}`}>

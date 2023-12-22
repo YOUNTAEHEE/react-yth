@@ -8,7 +8,6 @@ import Modal from "../../common/modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import * as types from "../../../redux/actionType";
 export default function Gallery() {
-  const [Mounted, setMounted] = useState(true);
 
   const dispatch = useDispatch();
   const Pics = useSelector((store) => store.flickrReducer.flickr);
@@ -78,10 +77,7 @@ export default function Gallery() {
     });
     searched.current = true;
   };
-  useEffect(() => {
-    return () => setMounted(false);
-  }, [Mounted]);
-
+  
   useEffect(() => {
     refFrmaeWrap.current.style.setProperty("--gap", gap.current + "px");
   }, []);
@@ -112,7 +108,7 @@ export default function Gallery() {
             {searched.current && Pics.length === 0 ? (
               <h2>해당 키워드에 대한 검색 결과가 없습니다.</h2>
             ) : (
-             Mounted && Pics.map((pic, idx) => {
+              Pics.map((pic, idx) => {
                 return (
                   <article key={pic.id}>
                     <div className="pic">
@@ -148,7 +144,7 @@ export default function Gallery() {
         </section>
       </Layout>
       <Modal>
-        {Mounted && Pics.length !== 0 && (
+        { Pics.length !== 0 && (
           <img
             src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
             alt={Pics[Index].title}

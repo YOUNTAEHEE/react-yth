@@ -3,15 +3,12 @@ import Layout from "../../common/layout/Layout";
 import "./Department.scss";
 import { useSelector } from "react-redux";
 export default function Department() {
-  const [Mounted, setMounted] = useState(true);
 
   const path = useRef(process.env.PUBLIC_URL);
   const { activeReducer, memberReducer } = useSelector((store) => store);
   const Active = Object.values(activeReducer.active);
   const MemberData = Object.values(memberReducer.member);
-  useEffect(() => {
-    return () => setMounted(false);
-  }, [Mounted]);
+ 
   return (
     <Layout title={"Department"}>
       <section className="memberBox">
@@ -20,7 +17,7 @@ export default function Department() {
             <p>Experience you can trust.</p>
           </div>
           <div className="con1PicBox">
-            {Mounted &&
+            {
               Active.map((data, idx) => {
                 return (
                   <div className="con1Pic" key={data + idx}>
@@ -42,7 +39,7 @@ export default function Department() {
               possible
             </p>
             <div className="con2PicBox">
-              {Mounted &&
+              {
                 MemberData.map((data, idx) => {
                   return (
                     <article key={data + idx}>

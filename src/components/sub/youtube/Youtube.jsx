@@ -6,7 +6,6 @@ import { useCustomText } from "../../../hooks/useText";
 import { useSelector } from "react-redux";
 
 export default function Youtube() {
-  const [Mounted, setMounted] = useState(true);
   const Vids = useSelector((store) => store.youtubeReducer.youtube);
 
   const monthName = [
@@ -26,14 +25,12 @@ export default function Youtube() {
 
   const shortenText = useCustomText("shorten");
   const path = useRef(process.env.PUBLIC_URL);
-  useEffect(() => {
-    return () => setMounted(false);
-  }, [Mounted]);
+
   return (
     <Layout title={"Youtube"}>
       <h2>YOUN Youtube</h2>
       <div className="con1">
-        { Mounted && Vids.slice(0, 3).map((data) => {
+        {  Vids.slice(0, 3).map((data) => {
           const [date, time] = data.snippet.publishedAt.split("T");
           const [year, month, day] = date.split("-");
           return (
@@ -62,7 +59,7 @@ export default function Youtube() {
         <p>Walk Don't Run</p>
       </div>
       <div className="con3">
-        { Mounted && Vids.slice(3).map((data, index) => {
+        {  Vids.slice(3).map((data, index) => {
           console.log(data.snippet.publishedAt);
           const [date, time] = data.snippet.publishedAt.split("T");
           const [year, month, day] = date.split("-");
