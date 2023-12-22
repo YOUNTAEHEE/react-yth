@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Layout from "../../common/layout/Layout";
 import "./Gallery.scss";
 import Masonry from "react-masonry-component";
@@ -68,34 +68,34 @@ export default function Gallery() {
     fetchFlickr({ type: "search", keyword: keyword });
     searched.current = true;
   };
-  const fetchFlickr = async (opt) => {
-    const num = 50;
-    const flickr_api = process.env.REACT_APP_FLICKR_API;
-    const baseURL = `https://www.flickr.com/services/rest/?api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
-    const method_interest = "flickr.interestingness.getList";
-    const method_user = "flickr.people.getPhotos";
-    const method_search = "flickr.photos.search";
-    const interestURL = `${baseURL}${method_interest}`;
-    const userURL = `${baseURL}${method_user}&user_id=${opt.id}`;
-    const searchURL = `${baseURL}${method_search}&tags=${opt.keyword}`;
+  const fetchFlickr = useCallback(
+    async (opt) => {
+      const num = 50;
+      const flickr_api = process.env.REACT_APP_FLICKR_API;
+      const baseURL = `https://www.flickr.com/services/rest/?api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
+      const method_interest = "flickr.interestingness.getList";
+      const method_user = "flickr.people.getPhotos";
+      const method_search = "flickr.photos.search";
+      const interestURL = `${baseURL}${method_interest}`;
+      const userURL = `${baseURL}${method_user}&user_id=${opt.id}`;
+      const searchURL = `${baseURL}${method_search}&tags=${opt.keyword}`;
 
-    let url = "";
-    opt.type === "user" && (url = userURL);
-    opt.type === "interest" && (url = interestURL);
-    opt.type === "search" && (url = searchURL);
-    const data = await fetch(url);
-    const json = await data.json();
-    console.log(json);
-    setPics(json.photos.photo);
-  };
+      let url = "";
+      opt.type === "user" && (url = userURL);
+      opt.type === "interest" && (url = interestURL);
+      opt.type === "search" && (url = searchURL);
+      const data = await fetch(url);
+      const json = await data.json();
+      console.log(json);
+      Mounted && setPics(json.photos.photo);
+    },
+    [Mounted]
+  );
   useEffect(() => {
     refFrmaeWrap.current.style.setProperty("--gap", gap.current + "px");
     fetchFlickr({ type: "user", id: myID.current });
-  }, []);
-
-  useEffect(() => {
     return () => setMounted(false);
-  }, [Mounted]);
+  }, [fetchFlickr]);
 
   return (
     <>
@@ -124,7 +124,6 @@ export default function Gallery() {
             {searched.current && Pics.length === 0 ? (
               <h2>해당 키워드에 대한 검색 결과가 없습니다.</h2>
             ) : (
-              Mounted &&
               Pics.map((pic, idx) => {
                 return (
                   <article key={pic.id}>
@@ -161,7 +160,7 @@ export default function Gallery() {
         </section>
       </Layout>
       <Modal>
-        {Mounted && Pics.length !== 0 && (
+        {Pics.length !== 0 && (
           <img
             src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
             alt={Pics[Index].title}

@@ -3,17 +3,11 @@ import Layout from "../../common/layout/Layout";
 import "./Department.scss";
 import { useSelector } from "react-redux";
 export default function Department() {
-  const [Mounted, setMounted] = useState(true);
-
   const { activeReducer, memberReducer } = useSelector((store) => store);
   const Active = Object.values(activeReducer.active)[0];
   const MemberData = Object.values(memberReducer.member)[0];
 
   const path = useRef(process.env.PUBLIC_URL);
-
-  useEffect(() => {
-    return () => setMounted(false);
-  }, [Mounted]);
 
   return (
     <Layout title={"Department"}>
@@ -23,18 +17,17 @@ export default function Department() {
             <p>Experience you can trust.</p>
           </div>
           <div className="con1PicBox">
-            {Mounted &&
-              Active.map((data, idx) => {
-                return (
-                  <div className="con1Pic" key={data + idx}>
-                    <img
-                      className="con1Img"
-                      src={`${path.current}/img/${data.pic}`}
-                      alt={data.name}
-                    />
-                  </div>
-                );
-              })}
+            {Active.map((data, idx) => {
+              return (
+                <div className="con1Pic" key={data + idx}>
+                  <img
+                    className="con1Img"
+                    src={`${path.current}/img/${data.pic}`}
+                    alt={data.name}
+                  />
+                </div>
+              );
+            })}
           </div>
         </article>
 
@@ -45,22 +38,21 @@ export default function Department() {
               possible
             </p>
             <div className="con2PicBox">
-              {Mounted &&
-                MemberData.map((data, idx) => {
-                  return (
-                    <article key={data + idx}>
-                      <div className="con2Pic">
-                        <img
-                          className="con2Img"
-                          src={`${path.current}/img/${data.pic}`}
-                          alt={data.name}
-                        />
-                      </div>
-                      <h2>{data.name}</h2>
-                      <p>{data.position}</p>
-                    </article>
-                  );
-                })}
+              {MemberData.map((data, idx) => {
+                return (
+                  <article key={data + idx}>
+                    <div className="con2Pic">
+                      <img
+                        className="con2Img"
+                        src={`${path.current}/img/${data.pic}`}
+                        alt={data.name}
+                      />
+                    </div>
+                    <h2>{data.name}</h2>
+                    <p>{data.position}</p>
+                  </article>
+                );
+              })}
             </div>
           </div>
 
