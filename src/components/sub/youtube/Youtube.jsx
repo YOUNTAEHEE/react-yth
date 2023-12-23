@@ -30,7 +30,7 @@ export default function Youtube() {
     <Layout title={"Youtube"}>
       <h2>YOUN Youtube</h2>
       <div className="con1">
-        {  Vids.slice(0, 3).map((data) => {
+        {Vids.slice(0, 3).map((data) => {
           const [date, time] = data.snippet.publishedAt.split("T");
           const [year, month, day] = date.split("-");
           return (
@@ -59,8 +59,7 @@ export default function Youtube() {
         <p>Walk Don't Run</p>
       </div>
       <div className="con3">
-        {  Vids.slice(3).map((data, index) => {
-          console.log(data.snippet.publishedAt);
+        {Vids.slice(3).map((data, index) => {
           const [date, time] = data.snippet.publishedAt.split("T");
           const [year, month, day] = date.split("-");
           return (
