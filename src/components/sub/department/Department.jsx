@@ -3,7 +3,8 @@ import Layout from "../../common/layout/Layout";
 import "./Department.scss";
 import { useSelector } from "react-redux";
 export default function Department() {
-  const { activeReducer, memberReducer } = useSelector((store) => store);
+  const activeReducer = useSelector((store) => store.activeReducer);
+  const memberReducer = useSelector((store) => store.memberReducer);
   const Active = Object.values(activeReducer.active)[0];
   const MemberData = Object.values(memberReducer.member)[0];
 

@@ -25,6 +25,7 @@ function App() {
   const fetchActive = useCallback(async () => {
     const data = await fetch(`${path.current}/DB/departmentCon1.json`);
     const json = await data.json();
+
     dispatch({ type: types.ACTIVE.success, payload: json });
   }, [dispatch]);
 
