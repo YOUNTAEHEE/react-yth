@@ -1,12 +1,9 @@
 import "./Header.scss";
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineMenu } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { menuToggle } from "../../../redux/menuSlice";
-import { darkToggle } from "../../../redux/darkSlice";
+import { useGlobalData } from "../../../hooks/useGlobalData";
 export default function Header() {
-  const dispatch = useDispatch();
-  const Dark = useSelector((store) => store.dark.isDark);
+  const { MenuOpen, setMenuOpen, Dark, setDark } = useGlobalData();
   return (
     <header className="Header">
       <h1>
@@ -48,12 +45,12 @@ export default function Header() {
         <div
           className={`themeBox ${Dark && "dark"}`}
           onClick={() => {
-            dispatch(darkToggle());
+            setDark(!Dark);
           }}
         >
           <div className="ball"></div>
         </div>
-        <div className="menuToggle" onClick={() => dispatch(menuToggle())}>
+        <div className="menuToggle" onClick={() => setMenuOpen(!MenuOpen)}>
           <MdOutlineMenu />
         </div>
       </div>

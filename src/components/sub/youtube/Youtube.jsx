@@ -1,12 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import Layout from "../../common/layout/Layout";
 import "./Youtube.scss";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useCustomText } from "../../../hooks/useText";
-import { useSelector } from "react-redux";
+import { useYoutubeQuery } from "../../../hooks/useYoutubeQuery";
 
 export default function Youtube() {
-  const Vids = useSelector((store) => store.youtube.data);
+  const {
+    data: Vids,
+    isSuccess,
+    isError,
+    error,
+    isLoading,
+  } = useYoutubeQuery();
+
   const monthName = [
     "Jan",
     "Feb",
@@ -24,12 +31,12 @@ export default function Youtube() {
 
   const shortenText = useCustomText("shorten");
   const path = useRef(process.env.PUBLIC_URL);
- 
+
   return (
     <Layout title={"Youtube"}>
       <h2>YOUN Youtube</h2>
       <div className="con1">
-        {Vids.slice(0, 3).map((data) => {
+        {isSuccess && Vids.slice(0, 3).map((data) => {
           const [date, time] = data.snippet.publishedAt.split("T");
           const [year, month, day] = date.split("-");
           return (
@@ -58,7 +65,7 @@ export default function Youtube() {
         <p>Walk Don't Run</p>
       </div>
       <div className="con3">
-        { Vids.slice(3).map((data, index) => {
+        {isSuccess && Vids.slice(3).map((data, index) => {
           const [date, time] = data.snippet.publishedAt.split("T");
           const [year, month, day] = date.split("-");
           return (

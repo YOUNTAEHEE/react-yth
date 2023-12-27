@@ -5,12 +5,10 @@ import Masonry from "react-masonry-component";
 import { useCustomText } from "../../../hooks/useText";
 import { LuSearch } from "react-icons/lu";
 import Modal from "../../common/modal/Modal";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchFlickr } from "../../../redux/flickrSlice";
-import { modalOpen } from "../../../redux/modalSlice";
+
+import { useFlickrQuery } from "../../../hooks/useFlickrQuery";
+import { useGlobalData } from "../../../hooks/useGlobalData";
 export default function Gallery() {
-  const dispatch = useDispatch();
-  const Pics = useSelector((store) => store.flickr.data);
   const [Index, setIndex] = useState(0);
   const searched = useRef(false);
 
@@ -22,6 +20,11 @@ export default function Gallery() {
 
   const refFrmaeWrap = useRef(null);
   const shortenText = useCustomText("shorten");
+  const [Opt, setOpt] = useState({ type: "user", id: myID.current });
+
+  const { data: Pics, isSuccess } = useFlickrQuery(Opt);
+
+  const { setModalOpen } = useGlobalData();
 
   const activateBtn = (e) => {
     const btns = refNav.current.querySelectorAll("button");
@@ -33,7 +36,7 @@ export default function Gallery() {
     if (e.target.classList.contains("on")) return;
     isUser.current = "";
     activateBtn(e);
-    dispatch(fetchFlickr({ type: "interest" }));
+    setOpt({ type: "interest" });
   };
 
   const handleMine = (e) => {
@@ -44,7 +47,7 @@ export default function Gallery() {
       return;
     isUser.current = myID.current;
     activateBtn(e);
-    dispatch(fetchFlickr({ type: "user", id: myID.current }));
+    setOpt({ type: "user", id: myID.current });
   };
   const handleUser = (e) => {
     console.log("handleMine called");
@@ -53,7 +56,7 @@ export default function Gallery() {
     if (isUser.current) return;
     isUser.current = e.target.innerText;
     activateBtn();
-    dispatch(fetchFlickr({ type: "user", id: e.target.innerText }));
+    setOpt({ type: "user", id: e.target.innerText });
   };
   const handleSearch = (e) => {
     console.log("handleMine called");
@@ -65,7 +68,7 @@ export default function Gallery() {
     const keyword = e.target.children[0].value;
     if (!keyword.trim()) return;
     e.target.children[0].value = "";
-    dispatch(fetchFlickr({ type: "search", keyword: keyword }));
+    setOpt({ type: "search", keyword: keyword });
 
     searched.current = true;
   };
@@ -73,7 +76,6 @@ export default function Gallery() {
   useEffect(() => {
     refFrmaeWrap.current.style.setProperty("--gap", gap.current + "px");
   }, []);
-
 
   return (
     <>
@@ -99,10 +101,10 @@ export default function Gallery() {
             className={"frame"}
             options={{ transitionDuration: "0.5s", gutter: gap.current }}
           >
-            {searched.current && Pics.length === 0 ? (
+            {isSuccess && searched.current && Pics.length === 0 ? (
               <h2>해당 키워드에 대한 검색 결과가 없습니다.</h2>
             ) : (
-              
+              isSuccess &&
               Pics.map((pic, idx) => {
                 return (
                   <article key={pic.id}>
@@ -120,7 +122,7 @@ export default function Gallery() {
                         <p className="line"></p>
                         <p
                           onClick={() => {
-                            dispatch(modalOpen());
+                            setModalOpen(true);
                             setIndex(idx);
                           }}
                         >
@@ -136,7 +138,7 @@ export default function Gallery() {
         </section>
       </Layout>
       <Modal>
-        { Pics.length !== 0 && (
+        {isSuccess && Pics.length !== 0 && (
           <img
             src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
             alt={Pics[Index].title}

@@ -10,39 +10,34 @@ import Contact from "./components/sub/contact/Contact";
 import MainWrap from "./components/main/mainWrap/MainWrap";
 import "./globalStyles/Variables.scss";
 import "./globalStyles/Reset.scss";
-import { useEffect } from "react";
 import Menu from "./components/common/menu/Menu";
-import { useDispatch, useSelector } from "react-redux";
 import { useMedia } from "./hooks/useMedia";
 import Detail from "./components/sub/youtube/Detail";
-import { fetchActive } from "./redux/activeSlice";
-import { fetchFlickr } from "./redux/flickrSlice";
-import { fetchMember } from "./redux/memberSlice";
-import { fetchYoutube } from "./redux/youtubeSlice";
-function App() {
-  const dispatch = useDispatch();
-  const Dark = useSelector((store) => store.dark.isDark);
 
-  useEffect(() => {
-    dispatch(fetchActive());
-    dispatch(fetchFlickr({ type: "user", id: "199625511@N07" }));
-    dispatch(fetchMember());
-    dispatch(fetchYoutube());
-  }, [dispatch]);
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { useGlobalData } from "./hooks/useGlobalData";
+function App() {
+  const { Dark } = useGlobalData();
+  const queryClient = new QueryClient();
+
   return (
-    <div className={`wrap ${Dark ? "dark" : ""} ${useMedia()}`}>
-      <Header />
-      <Route exact path="/" component={MainWrap} />
-      <Route path="/department" component={Department} />
-      <Route path="/youtube" component={Youtube} />
-      <Route path="/detail/:id" component={Detail} />
-      <Route path="/gallery" component={Gallery} />
-      <Route path="/community" component={Community} />
-      <Route path="/members" component={Members} />
-      <Route path="/contact" component={Contact} />
-      <Footer />
-      <Menu />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className={`wrap ${Dark ? "dark" : ""} ${useMedia()}`}>
+        <Header />
+        <Route exact path="/" component={MainWrap} />
+        <Route path="/department" component={Department} />
+        <Route path="/youtube" component={Youtube} />
+        <Route path="/detail/:id" component={Detail} />
+        <Route path="/gallery" component={Gallery} />
+        <Route path="/community" component={Community} />
+        <Route path="/members" component={Members} />
+        <Route path="/contact" component={Contact} />
+        <Footer />
+        <Menu />
+      </div>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 

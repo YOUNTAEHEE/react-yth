@@ -1,16 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
 import "./Modal.scss";
 import { IoMdClose } from "react-icons/io";
-import { modalClose } from "../../../redux/modalSlice";
+import { useGlobalData } from "../../../hooks/useGlobalData";
 export default function Modal({ children }) {
-  const dispatch = useDispatch();
-  const Open = useSelector((store) => store.modal.open);
+  const { ModalOpen, setModalOpen } = useGlobalData();
   return (
     <>
-      {Open && (
+      {ModalOpen && (
         <aside className="Modal">
           <div className="con">{children}</div>
-          <div className="close" onClick={() => dispatch(modalClose())}>
+          <div className="close" onClick={() => setModalOpen(false)}>
             <IoMdClose />
           </div>
         </aside>

@@ -1,26 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import "./Menu.scss";
 import { Link, NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { menuClose } from "../../../redux/menuSlice";
+import { useGlobalData } from "../../../hooks/useGlobalData";
 export default function Menu() {
-  const dispatch = useDispatch();
-  const Open = useSelector((store) => store.menu.open);
-  const closeMenu = () => {
-    window.innerWidth >= 1000 && dispatch(menuClose());
-  };
+  const { MenuOpen, setMenuOpen } = useGlobalData();
+  const closeMenu = useCallback(() => {
+    window.innerWidth >= 1000 && setMenuOpen(false);
+  }, [setMenuOpen]);
   useEffect(() => {
     window.addEventListener("resize", closeMenu);
     return () => window.removeEventListener("resize", closeMenu);
-  }, []);
+  }, [closeMenu]);
   const close = () => {
     setTimeout(() => {
-      dispatch(menuClose());
+      setMenuOpen(false);
     }, 200);
   };
   return (
     <>
-      {Open && (
+      {MenuOpen && (
         <aside className="Menu">
           <h2>
             <Link to="/" onClick={close}>

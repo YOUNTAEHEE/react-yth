@@ -1,14 +1,12 @@
 import { useRef } from "react";
 import Layout from "../../common/layout/Layout";
 import "./Department.scss";
-import { useSelector } from "react-redux";
+import { useMemberQuery } from "../../../hooks/useMemberQuery";
+import { useActiveQuery } from "../../../hooks/useActiveQuery";
 export default function Department() {
-  const active = useSelector((store) => store.active);
-  const member = useSelector((store) => store.member);
-  const Active = Object.values(active.data)[0];
-  const MemberData = Object.values(member.data)[0];
-
   const path = useRef(process.env.PUBLIC_URL);
+  const { data: Active, isSuccess: isActive } = useActiveQuery();
+  const { data: MemberData, isSuccess: isMember } = useMemberQuery();
 
   return (
     <Layout title={"Department"}>
@@ -18,17 +16,18 @@ export default function Department() {
             <p>Experience you can trust.</p>
           </div>
           <div className="con1PicBox">
-            {Active.map((data, idx) => {
-              return (
-                <div className="con1Pic" key={data + idx}>
-                  <img
-                    className="con1Img"
-                    src={`${path.current}/img/${data.pic}`}
-                    alt={data.name}
-                  />
-                </div>
-              );
-            })}
+            {isActive &&
+              Active.map((data, idx) => {
+                return (
+                  <div className="con1Pic" key={data + idx}>
+                    <img
+                      className="con1Img"
+                      src={`${path.current}/img/${data.pic}`}
+                      alt={data.name}
+                    />
+                  </div>
+                );
+              })}
           </div>
         </article>
 
@@ -39,21 +38,22 @@ export default function Department() {
               possible
             </p>
             <div className="con2PicBox">
-              {MemberData.map((data, idx) => {
-                return (
-                  <article key={data + idx}>
-                    <div className="con2Pic">
-                      <img
-                        className="con2Img"
-                        src={`${path.current}/img/${data.pic}`}
-                        alt={data.name}
-                      />
-                    </div>
-                    <h2>{data.name}</h2>
-                    <p>{data.position}</p>
-                  </article>
-                );
-              })}
+              {isMember &&
+                MemberData.map((data, idx) => {
+                  return (
+                    <article key={data + idx}>
+                      <div className="con2Pic">
+                        <img
+                          className="con2Img"
+                          src={`${path.current}/img/${data.pic}`}
+                          alt={data.name}
+                        />
+                      </div>
+                      <h2>{data.name}</h2>
+                      <p>{data.position}</p>
+                    </article>
+                  );
+                })}
             </div>
           </div>
 
