@@ -17,13 +17,16 @@ import Detail from "./components/sub/youtube/Detail";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useGlobalData } from "./hooks/useGlobalData";
+import CookieModal from "./components/common/cookieModal/CookieModal";
 function App() {
-  const { Dark } = useGlobalData();
+  const { Mode } = useGlobalData();
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className={`wrap ${Dark ? "dark" : ""} ${useMedia()}`}>
+      <div
+        className={`wrap ${Mode === "light" ? "light" : "dark"} ${useMedia()}`}
+      >
         <Header />
         <Route exact path="/" component={MainWrap} />
         <Route path="/department" component={Department} />
@@ -35,6 +38,9 @@ function App() {
         <Route path="/contact" component={Contact} />
         <Footer />
         <Menu />
+        <CookieModal wid={300} ht={200}>
+          <h1>쿠키팝업</h1>
+        </CookieModal>
       </div>
       <ReactQueryDevtools />
     </QueryClientProvider>
