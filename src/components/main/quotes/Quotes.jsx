@@ -5,14 +5,6 @@ import { useState } from "react";
 export default function Quotes() {
   const quotesReducer = useSelector((store) => store.quotesReducer);
   const QuotesData = Object.values(quotesReducer.quotes)[0];
-  const [BtnNextOn, setBtnNextOn] = useState("");
-  const [CurrentIdx, setCurrentIdx] = useState(0);
-
-  const quotesBtnNext = (e, idx) => {
-    if (BtnNextOn === "nextOn") e.target.classList.remove("on");
-    setCurrentIdx(CurrentIdx + 1);
-    if (idx === CurrentIdx) setBtnNextOn("nextOn");
-  };
 
   return (
     <>
@@ -30,13 +22,13 @@ export default function Quotes() {
         <div className="quotesTxtBox">
           {QuotesData?.map((data, idx) => {
             return (
-              <div className={`txt ${BtnNextOn}`} key={data + idx}>
+              <div className="txt" key={data + idx}>
                 <p>{data.message}</p>
                 <p>{data.name}</p>
               </div>
             );
           })}
-          <div className="btnBox">
+          {/* <div className="btnBox">
             <button className="quotesBtn">
               <GoArrowLeft />
             </button>
@@ -46,7 +38,7 @@ export default function Quotes() {
             >
               <GoArrowRight />
             </button>
-          </div>
+          </div> */}
         </div>
       </figure>
     </>

@@ -10,9 +10,9 @@ export default function Visual() {
           <img src={process.env.PUBLIC_URL + "/img/visual2.jpg"} alt="visual2" />
         </div>
       </figure>
-      <div className="visualVar">
+      {/* <div className="visualVar">
         <div className="visualLine"></div>
-      </div>
+      </div> */}
     </>
   );
 }

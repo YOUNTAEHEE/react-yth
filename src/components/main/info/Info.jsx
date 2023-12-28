@@ -24,9 +24,9 @@ export default function Info() {
       <div className="showBoxWrap">
         <div className="showBoxNtit">
           <h2>Community</h2>
-          <button>
+          {/* <button>
             <GoArrowLeft />
-          </button>
+          </button> */}
           <div className="showBox">
             {Post.map((el, idx) => {
               if (idx >= 3) return null;
@@ -44,9 +44,9 @@ export default function Info() {
               );
             })}
           </div>
-          <button className="on">
+          {/* <button className="on">
             <GoArrowRight />
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

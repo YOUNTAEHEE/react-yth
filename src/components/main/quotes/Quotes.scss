@@ -6,19 +6,19 @@
   .lineBox {
     display: flex;
     justify-content: flex-start;
-    .line {
-      display: inline-block;
-      height: 2px;
-      width: 43%;
-      background: var(--pointColor);
-    }
-    .line2 {
-      display: inline-block;
-      height: 2px;
-      width: 43%;
+    // .line {
+    //   display: inline-block;
+    //   height: 2px;
+    //   width: 43%;
+    //   background: var(--pointColor);
+    // }
+    // .line2 {
+    //   display: inline-block;
+    //   height: 2px;
+    //   width: 43%;
 
-      background: transparent;
-    }
+    //   background: transparent;
+    // }
   }
 
   .quotesBg1 {
@@ -54,27 +54,29 @@
           color: var(--pointColor);
         }
       }
-
+      &:not(:first-child) {
+        display: none;
+      }
       // &:not(.nextOn) {
       //   display: none;
       // }
     }
-    .btnBox {
-      position: absolute;
-      right: 0;
-      margin-right: 23%;
-      .quotesBtn {
-        background: transparent;
-        border: none;
-        font-size: 1.6rem;
-        font-weight: normal;
-        margin-left: 10px;
-        color: #999;
-        cursor: pointer;
-        &:nth-of-type(2).nextOn {
-          color: var(--pointColor);
-        }
-      }
-    }
+    // .btnBox {
+    //   position: absolute;
+    //   right: 0;
+    //   margin-right: 23%;
+    //   .quotesBtn {
+    //     background: transparent;
+    //     border: none;
+    //     font-size: 1.6rem;
+    //     font-weight: normal;
+    //     margin-left: 10px;
+    //     color: #999;
+    //     cursor: pointer;
+    //     // &:nth-of-type(2).nextOn {
+    //     //   color: var(--pointColor);
+    //     // }
+    //   }
+    // }
   }
 }
