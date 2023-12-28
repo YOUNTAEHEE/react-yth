@@ -1,10 +1,9 @@
+import { useMemberQuery } from "../../../hooks/useMemberQuery";
 import "./Intro.scss";
 import { useSelector } from "react-redux";
 
 export default function Intro() {
-  const memberReducer = useSelector((store) => store.memberReducer);
-  const MemberData = Object.values(memberReducer.member)[0];
-  console.log(MemberData);
+  const { data: MemberData, isSuccess: isMember } = useMemberQuery();
   return (
     <section className="Intro">
       <div className="txtBox">
@@ -25,7 +24,7 @@ export default function Intro() {
         <button>MORE ABOUT COMPANY</button>
       </div>
       <div className="memberPicWrap">
-        {MemberData?.map((data, idx) => {
+        {isMember && MemberData.map((data, idx) => {
           if (idx >= 1) return null;
           return (
             <article key={data + idx}>
