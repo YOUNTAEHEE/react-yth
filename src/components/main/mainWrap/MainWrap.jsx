@@ -1,6 +1,6 @@
 import Info from "../info/Info";
 import Intro from "../intro/Intro";
-import SubVisual from "../subVisual/SubVisual";
+import Quotes from "../quotes/Quotes";
 import Visual from "../visual/Visual";
 import "./MainWrap.scss";
 
@@ -9,7 +9,7 @@ export default function MainWrap() {
     <div className="MainWrap">
       <Visual />
       <Intro />
-      <SubVisual />
+      <Quotes />
       <Info />
     </div>
   );

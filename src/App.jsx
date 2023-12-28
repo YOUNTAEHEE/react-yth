@@ -22,6 +22,13 @@ function App() {
 
   const path = useRef(process.env.PUBLIC_URL);
 
+  const fetchQuotes = useCallback(async () => {
+    const data = await fetch(`${path.current}/DB/mainQuotes.json`);
+    const json = await data.json();
+
+    dispatch({ type: types.QUOTES.success, payload: json });
+  }, [dispatch]);
+
   const fetchActive = useCallback(async () => {
     const data = await fetch(`${path.current}/DB/departmentCon1.json`);
     const json = await data.json();
@@ -52,7 +59,8 @@ function App() {
     fetchActive();
     fetchMember();
     fetchYoutube();
-  }, [fetchActive, fetchMember, fetchYoutube]);
+    fetchQuotes();
+  }, [fetchActive, fetchMember, fetchYoutube,fetchQuotes]);
   return (
     <div className={`wrap ${Dark ? "dark" : ""} ${useMedia()}`}>
       <Header />

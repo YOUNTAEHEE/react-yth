@@ -1,3 +1,8 @@
+export const QUOTES = {
+  start: "QUOTES_START",
+  success: "QUOTES_SUCCESS",
+  fail: "QUOTES_FAIL",
+};
 export const ACTIVE = {
   start: "ACTIVE_START",
   success: "ACTIVE_SUCCESS",
@@ -15,13 +20,10 @@ export const YOUTUBE = {
 };
 export const MENU = {
   start: "MENU_START",
-
 };
 export const DARK = {
   start: "DARK_START",
-
 };
 export const MODAL = {
   start: "MODAL_START",
-
 };

@@ -1,6 +1,16 @@
 import { combineReducers } from "redux";
 import * as types from "./action";
 
+const quotesReducer = (state = { quotes: [] }, action) => {
+  switch (action.type) {
+    case types.QUOTES.success:
+      return { ...state, quotes: action.payload };
+      
+    default:
+      return state;
+  }
+};
+
 const activeReducer = (state = { active: [] }, action) => {
   switch (action.type) {
     case types.ACTIVE.success:
@@ -57,5 +67,6 @@ const reducers = combineReducers({
   menuReducer,
   darkReducer,
   modalReducer,
+  quotesReducer,
 });
 export default reducers;
