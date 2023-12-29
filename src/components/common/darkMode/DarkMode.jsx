@@ -5,5 +5,5 @@ export default function DarkMode() {
   const { setCookie, isCookie } = useCookie();
   const { Mode, setMode } = useGlobalData();
 
-  return <div className={``}>DarkMode</div>;
+  return <div className=''>DarkMode</div>;
 }
