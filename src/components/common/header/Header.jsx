@@ -2,6 +2,7 @@ import "./Header.scss";
 import { Link, NavLink } from "react-router-dom";
 import { MdOutlineMenu } from "react-icons/md";
 import { useGlobalData } from "../../../hooks/useGlobalData";
+import DarkMode from "../darkMode/DarkMode";
 export default function Header() {
   const { MenuOpen, setMenuOpen, Dark, setDark } = useGlobalData();
   return (
@@ -42,14 +43,8 @@ export default function Header() {
         </li>
       </ul>
       <div className="tabletBtns">
-        <div
-          className={`themeBox ${Dark && "dark"}`}
-          onClick={() => {
-            setDark(!Dark);
-          }}
-        >
-          <div className="ball"></div>
-        </div>
+
+        <DarkMode />
         <div className="menuToggle" onClick={() => setMenuOpen(!MenuOpen)}>
           <MdOutlineMenu />
         </div>
