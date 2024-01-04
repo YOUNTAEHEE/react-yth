@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useMemberQuery } from "../../../hooks/useMemberQuery";
 import "./Intro.scss";
 
@@ -29,7 +30,9 @@ export default function Intro() {
           nemo aut! Nostrum veritatis natus, provident doloribus asperiores
           ducimus nihil sapiente officiis omnis?
         </p>
-        <button>MORE ABOUT COMPANY</button>
+        <button>
+          <NavLink to="/department">MORE ABOUT COMPANY</NavLink>
+        </button>
       </div>
       <div className="memberPicWrap">
         {isMember &&

@@ -1,6 +1,7 @@
 import "./CookieModal.scss";
 import { useRef, useState } from "react";
 import { useCookie } from "../../../hooks/useCookie";
+import { IoMdClose } from "react-icons/io";
 export default function CookieModal({ wid, ht, children }) {
   const { isCookie, setCookie } = useCookie();
   const checkEl = useRef(null);
@@ -29,9 +30,9 @@ export default function CookieModal({ wid, ht, children }) {
           <div className="controls">
             <nav>
               <input ref={checkEl} type="checkbox" />
-              <span>오늘 하루 팝업보지 않기</span>
+              <span> 오늘 하루 팝업보지 않기</span>
             </nav>
-            <span onClick={handleClose}>close</span>
+            <span onClick={handleClose}><IoMdClose /></span>
           </div>
         </aside>
       )}

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Layout from "../../common/layout/Layout";
 import "./Department.scss";
 import { useMemberQuery } from "../../../hooks/useMemberQuery";
@@ -7,7 +7,9 @@ export default function Department() {
   const path = useRef(process.env.PUBLIC_URL);
   const { data: Active, isSuccess: isActive } = useActiveQuery();
   const { data: MemberData, isSuccess: isMember } = useMemberQuery();
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Layout title={"Department"}>
       <section className="memberBox">
