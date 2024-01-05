@@ -15,9 +15,9 @@ export default function Visual() {
   const swiperRef = useRef(null);
   const { data, isSuccess } = useYoutubeQuery();
   const num = useRef(5);
-  const [PrevIndex, setPrevIndex] = useState(1);
-  const [Index, setIndex] = useState(2);
-  const [NextIndex, setNextIndex] = useState(3);
+  const [PrevIndex, setPrevIndex] = useState(0);
+  const [Index, setIndex] = useState(0);
+  const [NextIndex, setNextIndex] = useState(0);
 
   const [Rolling, setRolling] = useState(true);
   const shortenText = useCustomText("shorten");
@@ -68,7 +68,7 @@ export default function Visual() {
         <Swiper {...swiperOption.current}>
           {isSuccess &&
             data.map((vid, idx) => {
-              if (idx >= 5) return null;
+              if (idx >= num.current) return null;
               return (
                 <SwiperSlide key={vid.id}>
                   <div className="inner">
@@ -130,7 +130,7 @@ export default function Visual() {
           className="visualLine"
           style={{
             width: 100 / num.current + "%",
-            transform: `translateX(${(100 / num.current) * (Index + 1) + "%"})`,
+            left: (100 / num.current) * (Index) + "%",
           }}
         ></div>
       </div>
