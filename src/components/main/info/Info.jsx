@@ -14,7 +14,7 @@ export default function Info() {
     localStorage.setItem("post", JSON.stringify(Post));
   }, [Post]);
   return (
-    <div className="Info">
+    <div className="Info myScroll">
       <div className="infoBg">
         <div className="bgPic">
           <img src={process.env.PUBLIC_URL + "/img/infoBg.jpg"} alt="infoBg" />

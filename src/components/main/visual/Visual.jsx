@@ -53,7 +53,6 @@ export default function Visual() {
         : setNextIndex(swiper.realIndex + 1);
     },
   });
-  console.dir(swiperRef.current);
   const trimTitle = (title) => {
     let resultTit = "";
     if (title.includes("(")) resultTit = title.split("(")[0];
@@ -130,7 +129,7 @@ export default function Visual() {
           className="visualLine"
           style={{
             width: 100 / num.current + "%",
-            left: (100 / num.current) * (Index) + "%",
+            left: (100 / num.current) * Index + "%",
           }}
         ></div>
       </div>

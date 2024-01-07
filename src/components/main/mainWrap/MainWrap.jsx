@@ -1,3 +1,4 @@
+import Btns from "../btns/Btns";
 import Info from "../info/Info";
 import Intro from "../intro/Intro";
 import Quotes from "../quotes/Quotes";
@@ -11,6 +12,7 @@ export default function MainWrap() {
       <Intro />
       <Quotes />
       <Info />
+      <Btns />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Intro() {
   const { data: MemberData, isSuccess: isMember } = useMemberQuery();
   return (
-    <section className="Intro">
+    <section className="Intro myScroll">
       <div className="txtBox">
         <h2>
           Who <strong>We Are?</strong>
