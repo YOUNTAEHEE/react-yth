@@ -6,10 +6,10 @@ export default function Quotes() {
   return (
     <>
       <figure className="Quotes myScroll">
-        <div className="lineBox">
+        {/* <div className="lineBox">
           <div className="line"></div>
           <div className="line2"></div>
-        </div>
+        </div> */}
         <div className="quotesBg1">
           <img
             src={process.env.PUBLIC_URL + "/img/quotesBg.jpg"}

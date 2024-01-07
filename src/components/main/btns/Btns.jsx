@@ -66,6 +66,7 @@ export default function Btns(opt) {
   const throttleModifyPos = useThrottle(modifyPos, 200);
   useEffect(() => {
     wrap.current = document.querySelector(resultOpt.current.frame);
+
     secs.current = wrap.current.querySelectorAll(resultOpt.current.items);
     setNum(secs.current.length);
 

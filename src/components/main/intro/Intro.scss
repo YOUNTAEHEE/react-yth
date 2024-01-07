@@ -62,8 +62,24 @@
         top: 100px;
         left: -100px;
         box-shadow: -10px 10px 15px 0px rgba(0, 0, 0, 0.3);
-     
       }
+    }
+  }
+}
+
+.tablet,
+.mobile {
+  .Intro {
+    width: 100%;
+    height: auto;
+    padding: 80px 15vw;
+
+    .txtBox {
+      width: 100%;
+      margin-top: -0px;
+    }
+    .memberPicWrap {
+      display: none;
     }
   }
 }
