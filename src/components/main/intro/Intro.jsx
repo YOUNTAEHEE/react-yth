@@ -1,9 +1,9 @@
-import { useMemberQuery } from "../../../hooks/useMemberQuery";
 import "./Intro.scss";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 export default function Intro() {
-  const { data: MemberData, isSuccess: isMember } = useMemberQuery();
+  const member = useSelector((store) => store.member);
+  const MemberData = Object.values(member.data)[0];
   return (
     <section className="Intro myScroll">
       <div className="txtBox">
@@ -35,20 +35,19 @@ export default function Intro() {
         </button>
       </div>
       <div className="memberPicWrap">
-        {isMember &&
-          MemberData.map((data, idx) => {
-            if (idx >= 1) return null;
-            return (
-              <article key={data + idx}>
-                <div className="mainIntroPicBg">
-                  <img
-                    src={`${process.env.PUBLIC_URL}/img/${data.pic}`}
-                    alt={data.name}
-                  />
-                </div>
-              </article>
-            );
-          })}
+        {MemberData?.map((data, idx) => {
+          if (idx >= 1) return null;
+          return (
+            <article key={data + idx}>
+              <div className="mainIntroPicBg">
+                <img
+                  src={`${process.env.PUBLIC_URL}/img/${data.pic}`}
+                  alt={data.name}
+                />
+              </div>
+            </article>
+          );
+        })}
 
         {MemberData?.map((data, idx) => {
           if (idx >= 1) return null;

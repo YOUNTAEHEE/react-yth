@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Layout from "../../common/layout/Layout";
 import "./Community.scss";
-import postData from "./dummyPosts.json";
 export default function Community() {
   const getLocalData = () => {
     const data = localStorage.getItem("post");
-    if (data) return JSON.parse(data);
-    else return postData.dummyPosts;
+    return JSON.parse(data);
   };
 
   const [Post, setPost] = useState(getLocalData());
