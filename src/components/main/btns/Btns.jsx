@@ -4,7 +4,7 @@ import "./Btns.scss";
 import { useThrottle } from "../../../hooks/useThrottle";
 export default function Btns(opt) {
   const defOpt = useRef({
-    frame: ".wrap",
+    //frame: ".wrap",
     items: ".myScroll",
     base: -window.innerHeight / 2,
     isAuto: false,
@@ -13,13 +13,14 @@ export default function Btns(opt) {
   const [Num, setNum] = useState(0);
 
   const isAutoScroll = useRef(resultOpt.current.isAuto);
-  const wrap = useRef(null);
+  //const wrap = useRef(null);
   const secs = useRef(null);
   const btns = useRef(null);
   const baseLine = useRef(resultOpt.current.base);
   const isMotion = useRef(false);
   const activation = () => {
-    const scroll = wrap.current?.scrollTop;
+    // const scroll = wrap.current?.scrollTop;
+    const scroll = window.scrollY;
 
     secs.current.forEach((_, idx) => {
       if (scroll >= secs.current[idx].offsetTop + baseLine.current) {
@@ -34,7 +35,7 @@ export default function Btns(opt) {
     if (isMotion.current) return;
     isMotion.current = true;
     new Anime(
-      wrap.current,
+      window,
       { scroll: secs.current[idx].offsetTop },
       { callback: () => (isMotion.current = false) }
     );
@@ -59,25 +60,32 @@ export default function Btns(opt) {
     const btnsArr = Array.from(btns.current.children);
     const activeEl = btns.current.querySelector("li.on");
     const activeIndex = btnsArr.indexOf(activeEl);
-    wrap.current.scrollTop = secs.current[activeIndex].offsetTop;
+    //wrap.current.scrollTop = secs.current[activeIndex].offsetTop;
+    window.scrollY = secs.current[activeIndex].offsetTop;
   };
 
   const throttledActivation = useThrottle(activation);
   const throttleModifyPos = useThrottle(modifyPos, 200);
   useEffect(() => {
-    wrap.current = document.querySelector(resultOpt.current.frame);
+    //wrap.current = document.querySelector(resultOpt.current.frame);
 
-    secs.current = wrap.current.querySelectorAll(resultOpt.current.items);
+    //secs.current = wrap.current.querySelectorAll(resultOpt.current.items);
+    secs.current = document.querySelectorAll(resultOpt.current.items);
     setNum(secs.current.length);
 
     window.addEventListener("resize", throttleModifyPos);
-    wrap.current.addEventListener("scroll", throttledActivation);
+    //wrap.current.addEventListener("scroll", throttledActivation);
+    window.addEventListener("scroll", throttledActivation);
+
     isAutoScroll.current &&
-      wrap.current.addEventListener("mousewheel", autoScroll);
+      //wrap.current.addEventListener("mousewheel", autoScroll);
+      window.current.addEventListener("mousewheel", autoScroll);
     return () => {
       window.removeEventListener("resize", throttleModifyPos);
-      wrap.current.removeEventListener("scroll", throttledActivation);
-      wrap.current.removeEventListener("mousewheel", autoScroll);
+      //wrap.current.removeEventListener("scroll", throttledActivation);
+      //wrap.current.removeEventListener("mousewheel", autoScroll);
+      window.removeEventListener("scroll", throttledActivation);
+      window.removeEventListener("mousewheel", autoScroll);
     };
   }, [
     throttleModifyPos,

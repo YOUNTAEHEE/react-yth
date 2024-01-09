@@ -8,7 +8,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const Dark = useSelector((store) => store.dark.isDark);
   return (
-    <header className="Header">
+    <header className="Header myScroll">
       <h1>
         <Link to="/">YOUN</Link>
       </h1>
