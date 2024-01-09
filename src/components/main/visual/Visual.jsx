@@ -31,7 +31,7 @@ export default function Visual() {
     // },
     autoplay: { delay: 2000, disableOnInteraction: true },
     loop: true,
-    slidePerView: 1,
+   // slidePerView: 1,
     centeredSlides: true,
     loopedSlides: num.current,
 
