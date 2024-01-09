@@ -9,7 +9,7 @@ export default function Header() {
   const Dark = darkReducer.dark;
   const Open = menuReducer.menu;
   return (
-    <header className="Header">
+    <header className="Header myScroll">
       <h1>
         <Link to="/">YOUN</Link>
       </h1>
