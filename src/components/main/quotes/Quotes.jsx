@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Quotes() {
   return (
     <>
-      <figure className="Quotes myScroll">
+      <figure className="Quotes">
         {/* <div className="lineBox">
           <div className="line"></div>
           <div className="line2"></div>

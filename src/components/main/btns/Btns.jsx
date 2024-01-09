@@ -96,7 +96,7 @@ export default function Btns(opt) {
             <li
               key={idx}
               className={idx === 0 ? "on" : ""}
-              onClick={() => {}}
+              onClick={() => moveScroll(idx)}
             ></li>
           );
         })}

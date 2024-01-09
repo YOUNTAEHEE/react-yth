@@ -19,29 +19,40 @@ a {
 }
 .wrap {
   width: 100%;
+  // height: 100vh;
   color: var(--baseColor);
   font-family: var(--baseFont);
   background-color: var(--bgColor);
   font-size: (--bodySize);
-}
-.h {
-  position: absolute;
-  top: -9999999px;
-  opacity: 0;
-}
-table,
-th,
-td {
-  border-collapse: collapse;
-}
-textarea {
-  resize: none;
-}
-input,
-button {
-  outline: 0;
-}
-fieldset {
-  border: none;
-}
+  overflow-y: auto;
+  transition: color 1s, background-color 1s;
+  .h {
+    position: absolute;
+    top: -9999999px;
+    opacity: 0;
+  }
+  table,
+  th,
+  td {
+    border-collapse: collapse;
+  }
+  textarea {
+    resize: none;
+  }
+  input,
+  button {
+    outline: 0;
+  }
+  fieldset {
+    border: none;
+  }
 
+  // &::-webkit-scrollbar {
+  //   width: 8px;
+  //   background-color: transparent;
+  // }
+  // &::-webkit-scrollbar-thumb {
+  //   border-radius: 4px;
+  //   background: var(--pointColor);
+  // }
+}
