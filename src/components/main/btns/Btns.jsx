@@ -1,7 +1,8 @@
 import Anime from "../../../asset/anime";
-import { useCallback, useEffect, useRef, useState } from "react";
 import "./Btns.scss";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { useThrottle } from "../../../hooks/useThrottle";
+
 export default function Btns(opt) {
   const defOpt = useRef({
     frame: ".wrap",
@@ -11,6 +12,7 @@ export default function Btns(opt) {
   });
   const resultOpt = useRef({ ...defOpt.current, ...opt });
   const [Num, setNum] = useState(0);
+  //const [Mounted, setMounted] = useState(true);
 
   const isAutoScroll = useRef(resultOpt.current.isAuto);
   const wrap = useRef(null);
@@ -18,6 +20,7 @@ export default function Btns(opt) {
   const btns = useRef(null);
   const baseLine = useRef(resultOpt.current.base);
   const isMotion = useRef(false);
+
   const activation = () => {
     const scroll = wrap.current?.scrollTop;
 
@@ -26,6 +29,9 @@ export default function Btns(opt) {
         const btnsArr = btns.current?.querySelectorAll("li");
         btnsArr?.forEach((btn) => btn.classList.remove("on"));
         btns.current?.querySelectorAll("li")[idx]?.classList.add("on");
+
+        secs.current?.forEach((sec) => sec.classList.remove("on"));
+        secs.current[idx]?.classList.add("on");
       }
     });
   };
@@ -63,26 +69,27 @@ export default function Btns(opt) {
   };
 
   const throttledActivation = useThrottle(activation);
-  const throttleModifyPos = useThrottle(modifyPos, 200);
+  const throttledModifyPos = useThrottle(modifyPos, 200);
+
   useEffect(() => {
     wrap.current = document.querySelector(resultOpt.current.frame);
-
     secs.current = wrap.current.querySelectorAll(resultOpt.current.items);
     setNum(secs.current.length);
 
-    window.addEventListener("resize", throttleModifyPos);
+    window.addEventListener("resize", throttledModifyPos);
     wrap.current.addEventListener("scroll", throttledActivation);
     isAutoScroll.current &&
       wrap.current.addEventListener("mousewheel", autoScroll);
+
     return () => {
-      window.removeEventListener("resize", throttleModifyPos);
+      window.removeEventListener("resize", throttledModifyPos);
       wrap.current.removeEventListener("scroll", throttledActivation);
       wrap.current.removeEventListener("mousewheel", autoScroll);
     };
   }, [
-    throttleModifyPos,
-    throttledActivation,
     autoScroll,
+    throttledActivation,
+    throttledModifyPos,
     resultOpt.current.frame,
     resultOpt.current.items,
   ]);

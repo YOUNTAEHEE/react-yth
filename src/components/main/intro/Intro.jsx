@@ -1,11 +1,28 @@
+import { useRef } from "react";
+import { useScroll } from "../../../hooks/useScroll";
 import { useMemberQuery } from "../../../hooks/useMemberQuery";
 import "./Intro.scss";
 import { Link } from "react-router-dom";
 
 export default function Intro() {
   const { data: MemberData, isSuccess: isMember } = useMemberQuery();
+  const titEl = useRef(null);
+
+  // const handleCustomScroll = (scroll) => {
+  //   if (scroll >= 0) {
+  //     titEl.current.style.transform = `translateX(${scroll}px)`;
+  //     titEl.current.style.opacity = 1 - scroll / 800;
+  //   } else {
+  //     titEl.current.style.transform = `translateX(0px)`;
+  //     titEl.current.style.opacity = 1;
+  //   }
+  // };
+
+  //const { refEl } = useScroll(handleCustomScroll);
   return (
-    <section className="Intro myScroll">
+    <section className="Intro myScroll" 
+    //ref={refEl}
+    >
       <div className="txtBox">
         <h2>
           Who <strong>We Are?</strong>
@@ -34,7 +51,7 @@ export default function Intro() {
           <Link to="/department">MORE ABOUT COMPANY</Link>
         </button>
       </div>
-      <div className="memberPicWrap">
+      <div className="memberPicWrap" ref={titEl}>
         {isMember &&
           MemberData.map((data, idx) => {
             if (idx >= 1) return null;
