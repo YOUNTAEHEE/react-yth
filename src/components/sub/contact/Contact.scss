@@ -58,7 +58,7 @@
       width: 46%;
       height: 50vh;
       padding: 45px;
-      background: rgba(var(--baseColor-code), 0.04);
+      background: rgba(var(--baseColor-code), 1);
       form {
         width: 100%;
         display: flex;
@@ -92,8 +92,8 @@
         .submitBtn {
           width: 150px;
           border: none;
-          background: rgba(var(--pointColor-code), 0.2);
-          color: rgba(var(----darkLightPointFontColor-code), 0.7);
+          background: rgba(var(--pointColor-code), 0.9);
+          color: rgba(var(--whiteColor-code),0.9);
           cursor: pointer;
         }
       }

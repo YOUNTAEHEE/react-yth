@@ -25,6 +25,7 @@ a {
   background-color: var(--bgColor);
   font-size: (--bodySize);
   overflow-y: auto;
+  overflow-x: hidden;
   transition: color 1s, background-color 1s;
   .h {
     position: absolute;

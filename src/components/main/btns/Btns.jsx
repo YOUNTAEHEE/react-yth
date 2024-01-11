@@ -23,14 +23,16 @@ export default function Btns(opt) {
 
   const activation = () => {
     const scroll = wrap.current?.scrollTop;
-
-    secs.current.forEach((_, idx) => {
+    const btnsArr = btns.current?.querySelectorAll("li");
+    secs.current.forEach((sec, idx) => {
       if (scroll >= secs.current[idx].offsetTop + baseLine.current) {
-        const btnsArr = btns.current?.querySelectorAll("li");
-        btnsArr?.forEach((btn) => btn.classList.remove("on"));
+        btnsArr?.forEach(
+          (btn) => !btn.classList.contains("on") && btn.classList.remove("on")
+        );
+        secs.current?.forEach(
+          (sec) => !sec.classList.contains("on") && sec.classList.remove("on")
+        );
         btns.current?.querySelectorAll("li")[idx]?.classList.add("on");
-
-        secs.current?.forEach((sec) => sec.classList.remove("on"));
         secs.current[idx]?.classList.add("on");
       }
     });

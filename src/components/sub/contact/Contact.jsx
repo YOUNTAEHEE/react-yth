@@ -161,6 +161,18 @@ export default function Contact() {
           <div>
             <p>Get in Touch</p>
             <p>Please get in touch if you have any questions about YOUN.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi,
+              impedit quis? Eum accusantium laboriosam in voluptates, quo
+              laudantium impedit fugit.
+            </p>
+            <br />
+            <strong>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laboriosam, sint!
+            </strong>
+            <br />
+            <p style={{ fontSize: "1.7rem" }}>Lorem ipsum dolor sit amet.</p>
           </div>
           <section className="iconBoxs">
             <article>
