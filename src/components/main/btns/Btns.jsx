@@ -25,15 +25,18 @@ export default function Btns(opt) {
     const scroll = wrap.current?.scrollTop;
     const btnsArr = btns.current?.querySelectorAll("li");
     secs.current.forEach((sec, idx) => {
-      if (scroll >= secs.current[idx].offsetTop + baseLine.current) {
-        btnsArr?.forEach(
-          (btn) => !btn.classList.contains("on") && btn.classList.remove("on")
-        );
-        secs.current?.forEach(
-          (sec) => !sec.classList.contains("on") && sec.classList.remove("on")
-        );
+      if (
+        scroll >= secs.current[idx].offsetTop + baseLine.current &&
+        scroll <
+          secs.current[idx].offsetTop +
+            secs.current[idx].offsetHeight +
+            (idx === secs.current.length - 1 ? 0 : baseLine.current)
+      ) {
         btns.current?.querySelectorAll("li")[idx]?.classList.add("on");
         secs.current[idx]?.classList.add("on");
+      } else {
+        btns.current?.querySelectorAll("li")[idx]?.classList.remove("on");
+        secs.current[idx]?.classList.remove("on");
       }
     });
   };
@@ -67,9 +70,8 @@ export default function Btns(opt) {
     const btnsArr = Array.from(btns.current.children);
     const activeEl = btns.current.querySelector("li.on");
     const activeIndex = btnsArr.indexOf(activeEl);
-    wrap.current.scrollTop = secs.current[activeIndex].offsetTop;
+    wrap.current.scrollTop = secs.current[activeIndex]?.offsetTop;
   };
-
   const throttledActivation = useThrottle(activation);
   const throttledModifyPos = useThrottle(modifyPos, 200);
 

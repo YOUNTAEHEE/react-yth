@@ -13,11 +13,14 @@ export default function Layout({ children, title }) {
   const { scrollTo, refEl } = useScroll(handleCustomScroll, 0);
 
   useEffect(() => {
-    scrollTo(0);
     setTimeout(() => {
       refEl.current?.classList.add("on");
     }, 300);
-  }, [scrollTo, refEl]);
+  }, [refEl]);
+
+  useEffect(() => {
+    scrollTo(0);
+  }, []);
 
   return (
     <main ref={refEl} className={`Layout ${title}`}>

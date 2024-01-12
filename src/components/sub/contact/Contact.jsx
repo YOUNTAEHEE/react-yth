@@ -167,33 +167,10 @@ export default function Contact() {
               laudantium impedit fugit.
             </p>
             <br />
-            <strong>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Laboriosam, sint!
-            </strong>
+            <strong>Laboriosam, sint!</strong>
             <br />
             <p style={{ fontSize: "1.7rem" }}>Lorem ipsum dolor sit amet.</p>
           </div>
-          <section className="iconBoxs">
-            <article>
-              <div>
-                <IoMailSharp />
-              </div>
-              <p>abcdf@naver.com</p>
-            </article>
-            <article>
-              <div>
-                <FaPhoneAlt />
-              </div>
-              <p>123-4567-8901</p>
-            </article>
-            <article>
-              <div>
-                <IoIosHome />
-              </div>
-              <p>175 Varrick Street, 3rd Floor. New York, NY 10014</p>
-            </article>
-          </section>
         </div>
         <div id="mailSection">
           <form ref={form} onSubmit={sendEmail}>
@@ -207,7 +184,51 @@ export default function Contact() {
           </form>
         </div>
       </div>
-
+      <section className="iconBoxs">
+        <article>
+          <div className="contactIcon">
+            <IoMailSharp />
+          </div>
+          <br />
+          <br />
+          <p>MESSAGE</p>
+          <br />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
+            quos!
+          </p>
+          <br />
+          <p>abcdf@naver.com</p>
+        </article>
+        <article>
+          <div className="contactIcon">
+            <FaPhoneAlt />
+          </div>
+          <br /> <br />
+          <p>CALL</p>
+          <br />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
+            quos!
+          </p>
+          <br />
+          <p>123-4567-8901</p>
+        </article>
+        <article>
+          <div className="contactIcon">
+            <IoIosHome />
+          </div>
+          <br /> <br />
+          <p>VISIT</p>
+          <br />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
+            quos!
+          </p>
+          <br />
+          <p>175 Varrick Street, 3rd Floor. New York, NY 10014</p>
+        </article>
+      </section>
       <div id="mapSection">
         <section className="tab">
           <article

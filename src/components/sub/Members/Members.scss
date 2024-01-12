@@ -10,7 +10,7 @@
       font-size: var(--titSize);
     }
     .formBox {
-      width: 100%;
+      width: 60%;
       table {
         width: 100%;
         tbody {
@@ -86,6 +86,50 @@
               }
             }
           }
+        }
+      }
+    }
+    .membersRightBox {
+      width: 35%;
+      height: 40vh;
+      background-color: rgba(var(--baseColor-code), 1);
+      opacity: 0;
+      transition: 0.5s 0.5s;
+      transform: translateX(-200px);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: center;
+      .membersTypo {
+        line-height: 7rem;
+        width: 100%;
+        text-align: center;
+        color: var(--whiteColor);
+        font-size: 5.5rem;
+        opacity: 0;
+        transform: scale(3) translateX(-200px);
+        transition: scale 0.5s 0.5s, transform 0.5s 0.5s;
+      }
+      .subTypo {
+        line-height: 1.5rem;
+        text-align: center;
+        width: 100%;
+        color: var(--whiteColor);
+        font-size: 1rem;
+        opacity: 0;
+        transform: scale(2) translateX(-200px);
+        transition: scale 0.5s 0.5s, transform 0.5s 0.5s;
+      }
+      &.on {
+        opacity: 1;
+        transform: translateX(0px);
+        .membersTypo {
+          opacity: 1;
+          transform: scale(1) translateX(0px);
+        }
+        .subTypo {
+          opacity: 1;
+          transform: scale(1) translateX(0px);
         }
       }
     }
