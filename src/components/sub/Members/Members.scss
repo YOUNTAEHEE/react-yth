@@ -5,6 +5,8 @@
     flex-wrap: wrap;
 
     justify-content: space-between;
+    align-content: space-between;
+
     h2 {
       width: 100%;
       font-size: var(--titSize);
@@ -96,14 +98,15 @@
       opacity: 0;
       transition: 0.5s 0.5s;
       transform: translateX(-200px);
+      padding: 30px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       align-content: center;
       .membersTypo {
         line-height: 7rem;
         width: 100%;
-        text-align: center;
+        text-align: left;
         color: var(--whiteColor);
         font-size: 5.5rem;
         opacity: 0;
@@ -112,7 +115,7 @@
       }
       .subTypo {
         line-height: 1.5rem;
-        text-align: center;
+        text-align: left;
         width: 100%;
         color: var(--whiteColor);
         font-size: 1rem;
@@ -140,6 +143,7 @@
   .Members {
     .membersWrap {
       .formBox {
+        width: 100%;
         table {
           tbody {
             tr {
@@ -165,6 +169,9 @@
             }
           }
         }
+      }
+      .membersRightBox {
+        display: none;
       }
     }
   }

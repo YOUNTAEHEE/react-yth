@@ -3,6 +3,7 @@ import Layout from "../../common/layout/Layout";
 import "./Department.scss";
 import { useMemberQuery } from "../../../hooks/useMemberQuery";
 import { useActiveQuery } from "../../../hooks/useActiveQuery";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 export default function Department() {
   const path = useRef(process.env.PUBLIC_URL);
   const { data: Active, isSuccess: isActive } = useActiveQuery();
@@ -65,7 +66,9 @@ export default function Department() {
                 Through the years we helped a lot of companies. Are you ready to
                 become our partner?
               </p>
-              <button>Get a Free Quote +</button>
+              <button>
+                <Link to="/contact">Get a Free Quote +</Link>
+              </button>
             </div>
           </div>
 

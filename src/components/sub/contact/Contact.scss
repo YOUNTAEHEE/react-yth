@@ -44,8 +44,8 @@
           padding: 10px;
           outline: 0;
           border: none;
-          background-color: var(--whiteColor);
-          color:var(--baseColor);
+          background-color: var(--inputBgColor);
+          color: var(--baseColor);
         }
 
         textarea {
@@ -55,9 +55,9 @@
           font-family: "arial";
           padding: 10px;
           outline: 0;
-          background-color: var(--whiteColor);
+          background-color: var(--inputBgColor);
           border: none;
-          color:var(--baseColor);
+          color: var(--baseColor);
         }
         .submitBtn {
           width: 150px;
@@ -135,7 +135,7 @@
         }
         &:nth-of-type(3) {
           width: 100%;
-          padding: 0 40px;
+          //padding: 0 40px;
           font-size: 0.8rem;
           text-align: center;
           color: var(--pointColor);
@@ -212,12 +212,10 @@
       align-content: space-between;
       .con1 {
         width: 100%;
-
         padding-right: 0;
         > div {
           margin-bottom: 40px;
         }
-        
       }
       #mailSection {
         width: 100%;
@@ -244,7 +242,6 @@
 .mobile {
   .Contact {
     .con1Wrap {
-    
       #mailSection {
         width: 100%;
         .submitBtn {

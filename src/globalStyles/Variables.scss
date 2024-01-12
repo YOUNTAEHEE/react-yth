@@ -1,33 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@200&display=swap");
 
 :root {
-	--baseColor: #111;
-	--baseColor-code: 18, 18, 18;
-	--pointColor: rgb(79, 57, 249);
-	--darkLightPointColor: rgb(79, 57, 249);
-	--pointColor-code:79, 57, 249;
-	--darkLightPointFontColor-code:79, 57, 249;
-	--whiteColor: #fff;
-	--whiteColor-code: 255, 255, 255;
-	--baseFont: 'Noto Sans KR', 'arial' '돋움';
-	--pointFont: 'Noto Sans KR', 'serif' '돋움';
-	--titSize: 2.3rem;
-	--midSize: 1.7rem;
-	--bodySize: 1rem;
-	--bgColor: #fff;
-	--onlyWhiteColor: #fff;
-	--menuBgColor:rgb(228, 224, 255);
-	--menuFontBgColor-code:39, 29, 101;
+  --baseColor: #111;
+  --baseColor-code: 18, 18, 18;
+  --pointColor: rgb(79, 57, 249);
+  --darkLightPointColor: rgb(79, 57, 249);
+  --pointColor-code: 79, 57, 249;
+  --darkLightPointFontColor-code: 79, 57, 249;
+  --whiteColor: #fff;
+  --whiteColor-code: 255, 255, 255;
+  --baseFont: "Noto Sans KR", "arial" "돋움";
+  --pointFont: "Noto Sans KR", "serif" "돋움";
+  --titSize: 2.3rem;
+  --midSize: 1.7rem;
+  --bodySize: 1rem;
+  --bgColor: #fff;
+  --onlyWhiteColor: #fff;
+  --menuBgColor: rgb(228, 224, 255);
+  --menuFontBgColor-code: 39, 29, 101;
+  --inputBgColor: #f1f1f1;
 }
 .dark {
-	--baseColor: #fff;
-	--baseColor-code: 255, 255, 255;
-	--whiteColor: #111;
-	--whiteColor-code: 18, 18, 18;
-	--bgColor: #111;
-	--onlyWhiteColor: #fff;
-	--pointColor: rgb(79, 57, 249);
-	--darkLightPointColor: rgb(182, 174, 255);
-	--darkLightPointFontColor-code:182, 174, 255;
-	--pointColor-code:79, 57, 249;
+  --baseColor: #fff;
+  --baseColor-code: 255, 255, 255;
+  --whiteColor: #111;
+  --whiteColor-code: 18, 18, 18;
+  --bgColor: #111;
+  --onlyWhiteColor: #fff;
+  --pointColor: rgb(79, 57, 249);
+  --darkLightPointColor: rgb(182, 174, 255);
+  --darkLightPointFontColor-code: 182, 174, 255;
+  --pointColor-code: 79, 57, 249;
+  --inputBgColor: #111;
 }
