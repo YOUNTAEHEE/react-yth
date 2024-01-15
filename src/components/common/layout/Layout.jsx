@@ -19,8 +19,8 @@ export default function Layout({ children, title }) {
   }, [refEl]);
 
   useEffect(() => {
-    scrollTo(0);
-  }, []);
+		scrollTo(0);
+	}, [scrollTo]);
 
   return (
     <main ref={refEl} className={`Layout ${title}`}>

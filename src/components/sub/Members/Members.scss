@@ -111,7 +111,7 @@
         font-size: 5.5rem;
         opacity: 0;
         transform: scale(3) translateX(-200px);
-        transition: scale 0.5s 0.5s, transform 0.5s 0.5s;
+        transition: scale 0.5s 0.5s, transform 0.5s 0.5s, opacity 0.5s 0.5s;
       }
       .subTypo {
         line-height: 1.5rem;
@@ -121,7 +121,7 @@
         font-size: 1rem;
         opacity: 0;
         transform: scale(2) translateX(-200px);
-        transition: scale 0.5s 0.5s, transform 0.5s 0.5s;
+        transition: scale 0.5s 0.5s, transform 0.5s 0.5s, opacity 0.5s 0.5s;
       }
       &.on {
         opacity: 1;
