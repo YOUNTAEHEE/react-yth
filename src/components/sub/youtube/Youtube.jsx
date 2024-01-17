@@ -6,13 +6,7 @@ import { useCustomText } from "../../../hooks/useText";
 import { useYoutubeQuery } from "../../../hooks/useYoutubeQuery";
 
 export default function Youtube() {
-  const {
-    data: Vids,
-    isSuccess,
-    isError,
-    error,
-    isLoading,
-  } = useYoutubeQuery();
+  const { data: Vids, isSuccess } = useYoutubeQuery();
 
   const monthName = [
     "Jan",
@@ -36,63 +30,67 @@ export default function Youtube() {
     <Layout title={"Youtube"}>
       <h2>YOUN Youtube</h2>
       <div className="con1">
-        {isSuccess && Vids.slice(0, 3).map((data) => {
-          const [date, time] = data.snippet.publishedAt.split("T");
-          const [year, month, day] = date.split("-");
-          return (
-            <article key={data.id}>
-              <div className="pic">
-                <Link to={`/detail/${data.id}`}>
-                  <img
-                    src={data.snippet.thumbnails.standard.url}
-                    alt={data.snippet.title}
-                  />
-                </Link>
-                <div className="date">
-                  <div>{day}</div>
-                  <div>{monthName[month - 1]}</div>
-                </div>
-              </div>
-
-              <h3>{shortenText(data.snippet.title, 50)}</h3>
-              <p>by. {shortenText(data.snippet.videoOwnerChannelTitle, 25)}</p>
-            </article>
-          );
-        })}
-      </div>
-      <div className="con2">
-        <img src={`${path.current}/img/youtubeCon2Pic.jpg`} alt="공원사진" />
-        <p>Walk Don't Run</p>
-      </div>
-      <div className="con3">
-        {isSuccess && Vids.slice(3).map((data, index) => {
-          const [date, time] = data.snippet.publishedAt.split("T");
-          const [year, month, day] = date.split("-");
-          return (
-            <div className="articleWrap" key={data.id}>
-              <article>
-                <div className="con3Pic">
+        {isSuccess &&
+          Vids.slice(0, 3).map((data) => {
+            const [date, time] = data.snippet.publishedAt.split("T");
+            const [year, month, day] = date.split("-");
+            return (
+              <article key={data.id}>
+                <div className="pic">
                   <Link to={`/detail/${data.id}`}>
                     <img
                       src={data.snippet.thumbnails.standard.url}
                       alt={data.snippet.title}
                     />
                   </Link>
+                  <div className="date">
+                    <div>{day}</div>
+                    <div>{monthName[month - 1]}</div>
+                  </div>
                 </div>
-                <div className="con3Date">
-                  <div>{day}</div>
-                  <div>{monthName[month - 1]}</div>
-                </div>
-              </article>
-              <div className="txt">
+
                 <h3>{shortenText(data.snippet.title, 50)}</h3>
                 <p>
                   by. {shortenText(data.snippet.videoOwnerChannelTitle, 25)}
                 </p>
+              </article>
+            );
+          })}
+      </div>
+      <div className="con2">
+        <img src={`${path.current}/img/youtubeCon2Pic.jpg`} alt="공원사진" />
+        <p>Walk Don't Run</p>
+      </div>
+      <div className="con3">
+        {isSuccess &&
+          Vids.slice(3).map((data, index) => {
+            const [date, time] = data.snippet.publishedAt.split("T");
+            const [year, month, day] = date.split("-");
+            return (
+              <div className="articleWrap" key={data.id}>
+                <article>
+                  <div className="con3Pic">
+                    <Link to={`/detail/${data.id}`}>
+                      <img
+                        src={data.snippet.thumbnails.standard.url}
+                        alt={data.snippet.title}
+                      />
+                    </Link>
+                  </div>
+                  <div className="con3Date">
+                    <div>{day}</div>
+                    <div>{monthName[month - 1]}</div>
+                  </div>
+                </article>
+                <div className="txt">
+                  <h3>{shortenText(data.snippet.title, 50)}</h3>
+                  <p>
+                    by. {shortenText(data.snippet.videoOwnerChannelTitle, 25)}
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </Layout>
   );

@@ -8,21 +8,8 @@ export default function Intro() {
   const { data: MemberData, isSuccess: isMember } = useMemberQuery();
   const titEl = useRef(null);
 
-  // const handleCustomScroll = (scroll) => {
-  //   if (scroll >= 0) {
-  //     titEl.current.style.transform = `translateX(${scroll}px)`;
-  //     titEl.current.style.opacity = 1 - scroll / 800;
-  //   } else {
-  //     titEl.current.style.transform = `translateX(0px)`;
-  //     titEl.current.style.opacity = 1;
-  //   }
-  // };
-
-  //const { refEl } = useScroll(handleCustomScroll);
   return (
-    <section className="Intro myScroll" 
-    //ref={refEl}
-    >
+    <section className="Intro myScroll">
       <div className="txtBox">
         <h2>
           Who <strong>We Are?</strong>

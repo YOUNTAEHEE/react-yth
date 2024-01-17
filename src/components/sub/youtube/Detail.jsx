@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import Layout from "../../common/layout/Layout";
 import "./Detail.scss";
-import { useEffect, useState } from "react";
 import { useYoutubeQueryById } from "../../../hooks/useYoutubeQuery";
 
 export default function Detail() {

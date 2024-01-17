@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "./Info.scss";
-import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 import postData from "./dummyPosts.json";
 export default function Info() {
   const getLocalData = () => {
@@ -24,9 +23,7 @@ export default function Info() {
       <div className="showBoxWrap">
         <div className="showBoxNtit">
           <h2>Community</h2>
-          {/* <button>
-            <GoArrowLeft />
-          </button> */}
+
           <div className="showBox">
             {Post.map((el, idx) => {
               if (idx >= 3) return null;
@@ -44,9 +41,6 @@ export default function Info() {
               );
             })}
           </div>
-          {/* <button className="on">
-            <GoArrowRight />
-          </button> */}
         </div>
       </div>
     </div>

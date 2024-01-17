@@ -7,8 +7,6 @@ import { useCustomText } from "../../../hooks/useText";
 import { useRef, useState } from "react";
 import { useYoutubeQuery } from "../../../hooks/useYoutubeQuery";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { IoMdPlay } from "react-icons/io";
-import { IoPauseSharp } from "react-icons/io5";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 export default function Visual() {
@@ -19,29 +17,18 @@ export default function Visual() {
   const [Index, setIndex] = useState(0);
   const [NextIndex, setNextIndex] = useState(0);
 
-  const [Rolling, setRolling] = useState(true);
   const shortenText = useCustomText("shorten");
 
   const swiperOption = useRef({
     modules: [Pagination, Autoplay],
-    // pagination: {
-    //   clickable: true,
-    //   renderBullet: (index, className) =>
-    //     `<span class=${className}>${index + 1}</span>`,
-    // },
+
     autoplay: { delay: 2000, disableOnInteraction: true },
     loop: true,
-   // slidePerView: 1,
     centeredSlides: true,
     loopedSlides: num.current,
 
     onSwiper: (swiper) => {
       swiperRef.current = swiper;
-      // swiperRef.current.pagination.el.addEventListener("click", () => {
-      //   swiperRef.current.autoplay.running
-      //     ? setRolling(true)
-      //     : setRolling(false);
-      // });
     },
     onSlideChange: (swiper) => {
       setIndex(swiper.realIndex);
@@ -100,12 +87,6 @@ export default function Visual() {
                 </SwiperSlide>
               );
             })}
-          {/* 
-          <Btns
-            swiperRef={swiperRef}
-            Rolling={Rolling}
-            setRolling={setRolling}
-          /> */}
         </Swiper>
       </figure>
       <nav className="stepBtns">

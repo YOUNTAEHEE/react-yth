@@ -78,8 +78,6 @@ export default function Members() {
     }
   };
 
-  //debounding이 적용된 state를 의존성배열에 등록해서
-  //해당 값으로 check함수 호출
   useEffect(() => {
     setErrs(check(DebouncedVal));
   }, [DebouncedVal]);

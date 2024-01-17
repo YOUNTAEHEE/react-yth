@@ -12,7 +12,6 @@ export default function Btns(opt) {
   });
   const resultOpt = useRef({ ...defOpt.current, ...opt });
   const [Num, setNum] = useState(0);
-  //const [Mounted, setMounted] = useState(true);
 
   const isAutoScroll = useRef(resultOpt.current.isAuto);
   const wrap = useRef(null);
@@ -23,7 +22,6 @@ export default function Btns(opt) {
 
   const activation = () => {
     const scroll = wrap.current?.scrollTop;
-    const btnsArr = btns.current?.querySelectorAll("li");
     secs.current.forEach((sec, idx) => {
       if (
         scroll >= secs.current[idx].offsetTop + baseLine.current &&

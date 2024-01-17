@@ -1,15 +1,8 @@
-import { useSelector } from "react-redux";
 import "./Quotes.scss";
-import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import { useState } from "react";
 export default function Quotes() {
   return (
     <>
       <figure className="Quotes">
-        {/* <div className="lineBox">
-          <div className="line"></div>
-          <div className="line2"></div>
-        </div> */}
         <div className="quotesBg1">
           <img
             src={process.env.PUBLIC_URL + "/img/quotesBg.jpg"}
@@ -24,17 +17,6 @@ export default function Quotes() {
             </p>
             <p>STEFANI RODRIGUEZ</p>
           </div>
-          {/* <div className="btnBox">
-            <button className="quotesBtn">
-              <GoArrowLeft />
-            </button>
-            <button
-              className={`quotesBtn ${BtnNextOn}`}
-              onClick={quotesBtnNext}
-            >
-              <GoArrowRight />
-            </button>
-          </div> */}
         </div>
       </figure>
     </>

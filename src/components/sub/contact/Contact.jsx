@@ -121,7 +121,6 @@ export default function Contact() {
     marker.current.setMap(mapInstance.current);
     setTraffic(false);
     setView(false);
-    //roadview();
     //지도 타입 컨트롤러 추가
     mapInstance.current.addControl(
       new kakao.current.maps.MapTypeControl(),
@@ -241,10 +240,15 @@ export default function Contact() {
           ></article>
         </section>
         <nav className="controlBox">
-          {mapInfo.current.map((el, idx) =>
-            //prettier-ignore
-            <button key={idx} onClick={() => setIndex(idx)} className={`mapBtn ${idx === Index ? 'on' : ''}`}>{el.title}</button>
-          )}
+          {mapInfo.current.map((el, idx) => (
+            <button
+              key={idx}
+              onClick={() => setIndex(idx)}
+              className={`mapBtn ${idx === Index ? "on" : ""}`}
+            >
+              {el.title}
+            </button>
+          ))}
           <button onClick={() => setView(!View)}>
             {View ? "map" : "road view"}
           </button>
