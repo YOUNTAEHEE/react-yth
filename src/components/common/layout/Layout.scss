@@ -33,6 +33,9 @@
   .Layout {
     width: 80vw;
     margin: 80px auto;
+    .btnTop{
+      box-shadow: 0 0 1px rgb(255, 255, 255); /* 쉐도우 설정 */
+    }
   }
 }
 .mobile {
