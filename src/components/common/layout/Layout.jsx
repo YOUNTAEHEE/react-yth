@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./Layout.scss";
+import Anime from "../../../asset/anime";
 import { useScroll } from "../../../hooks/useScroll";
 export default function Layout({ children, title }) {
   //const [Frame, setFrame] = useState(null);
@@ -17,9 +18,8 @@ export default function Layout({ children, title }) {
   // }, []);
 
   useEffect(() => {
-    scrollTo(0);
-  }, [scrollTo]);
-
+    new Anime(window, { scroll: 0 });
+  }, []);
   useEffect(() => {
     window.addEventListener("scroll", () => handleScroll(300));
   }, [getCurrentScroll, handleScroll]);
