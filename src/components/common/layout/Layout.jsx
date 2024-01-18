@@ -1,32 +1,30 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import "./Layout.scss";
 import { useScroll } from "../../../hooks/useScroll";
-export default function Layout({ children, title }) {
-  const [Frame, setFrame] = useState(null);
-  const refFrame = useRef(null);
-  const refBtnTop = useRef(null);
-  const { scrollTo, getCurrentScroll } = useScroll(Frame);
 
-  const handleScroll = useCallback((num) => {
-    getCurrentScroll(refFrame.current, 0) >= num
+export default function Layout({ children, title }) {
+  const refBtnTop = useRef(null);
+
+  const handleCustomScroll = (scroll) => {
+    scroll >= 100
       ? refBtnTop.current?.classList.add("on")
       : refBtnTop.current?.classList.remove("on");
-  });
-  useEffect(() => {
-    setFrame(refFrame.current?.closest(".wrap"));
-  }, []);
+  };
+  const { scrollTo, refEl } = useScroll(handleCustomScroll, 0);
 
   useEffect(() => {
-    scrollTo(0);
-  }, [scrollTo]);
+    setTimeout(() => {
+      refEl.current?.classList.add("on");
+    }, 300);
+  }, [refEl]);
 
   useEffect(() => {
-    Frame?.addEventListener("scroll", () => handleScroll(300));
-  }, [getCurrentScroll, handleScroll, Frame]);
+		scrollTo(0);
+	}, [scrollTo]);
+
   return (
-    <main ref={refFrame} className={`Layout ${title}`}>
+    <main ref={refEl} className={`Layout ${title}`}>
       {children}
-
       <button ref={refBtnTop} className="btnTop" onClick={() => scrollTo(0)}>
         Top
       </button>
