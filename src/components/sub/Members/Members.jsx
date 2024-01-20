@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Layout from "../../common/layout/Layout";
 import "./Members.scss";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 import { useDebounce } from "../../../hooks/useDebounce";
 export default function Members() {
   const refFrame = useRef(null);
