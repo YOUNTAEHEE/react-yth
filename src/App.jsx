@@ -3,7 +3,7 @@ import Footer from "./components/common/footer/Footer";
 import Header from "./components/common/header/Header";
 import Department from "./components/sub/department/Department";
 import Community from "./components/sub/community/Community";
-import Members from "./components/sub/Members/Members";
+import Members from "./components/sub/members/Members";
 import Gallery from "./components/sub/gallery/Gallery";
 import Youtube from "./components/sub/youtube/Youtube";
 import Contact from "./components/sub/contact/Contact";
