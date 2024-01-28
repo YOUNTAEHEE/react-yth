@@ -13,8 +13,9 @@ import { GrFormPrevious } from "react-icons/gr";
 export default function Visual() {
   const swiperRef = useRef(null);
   const { data, isSuccess } = useYoutubeQuery();
-  const { data: Pics, isSuccess: isPics } = useFlickrQuery({ type: "interest" });
-  console.log('p',Pics);
+  const { data: Pics, isSuccess: isPics } = useFlickrQuery({
+    type: "interest",
+  });
   const num = useRef(5);
   const [PrevIndex, setPrevIndex] = useState(0);
   const [Index, setIndex] = useState(0);
@@ -94,7 +95,6 @@ export default function Visual() {
               })
             : isPics &&
               Pics.map((pic, idx) => {
-           
                 if (idx >= num.current) return null;
                 return (
                   <SwiperSlide key={pic.id}>
@@ -114,7 +114,11 @@ export default function Visual() {
                         </p>
                       </div>
                       <div className="txtBox">
-                        <h2>{pic.title? shortenText(pic.title, 20) : 'Flickr Artist Image'}</h2>
+                        <h2>
+                          {pic.title
+                            ? shortenText(pic.title, 20)
+                            : "Flickr Artist Image"}
+                        </h2>
 
                         <Link
                           to={`/gallery`}
