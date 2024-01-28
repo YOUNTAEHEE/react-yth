@@ -6,16 +6,20 @@ import "swiper/css";
 import { useCustomText } from "../../../hooks/useText";
 import { useRef, useState } from "react";
 import { useYoutubeQuery } from "../../../hooks/useYoutubeQuery";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useFlickrQuery } from "../../../hooks/useFlickrQuery";
+import { Link } from "react-router-dom";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
 export default function Visual() {
   const swiperRef = useRef(null);
   const { data, isSuccess } = useYoutubeQuery();
+  const { data: Pics, isSuccess: isPics } = useFlickrQuery({ type: "interest" });
+  console.log('p',Pics);
   const num = useRef(5);
   const [PrevIndex, setPrevIndex] = useState(0);
   const [Index, setIndex] = useState(0);
   const [NextIndex, setNextIndex] = useState(0);
+  const [Version, setVersion] = useState(true);
 
   const shortenText = useCustomText("shorten");
 
@@ -52,45 +56,86 @@ export default function Visual() {
     <>
       <figure className="Visual">
         <Swiper {...swiperOption.current}>
-          {isSuccess &&
-            data.map((vid, idx) => {
-              if (idx >= num.current) return null;
-              return (
-                <SwiperSlide key={vid.id}>
-                  <div className="inner">
-                    <div className="picBox">
-                      <p>
-                        <img
-                          src={vid.snippet.thumbnails.standard.url}
-                          alt={vid.snippet.title}
-                        />
-                      </p>
-                      <p>
-                        <img
-                          src={vid.snippet.thumbnails.standard.url}
-                          alt={vid.snippet.title}
-                        />
-                      </p>
-                    </div>
-                    <div className="txtBox">
-                      <h2>{shortenText(trimTitle(vid.snippet.title), 50)}</h2>
+          {Version
+            ? isSuccess &&
+              data.map((vid, idx) => {
+                if (idx >= num.current) return null;
+                return (
+                  <SwiperSlide key={vid.id}>
+                    <div className="inner">
+                      <div className="picBox">
+                        <p>
+                          <img
+                            src={vid.snippet.thumbnails.standard.url}
+                            alt={vid.snippet.title}
+                          />
+                        </p>
+                        <p>
+                          <img
+                            src={vid.snippet.thumbnails.standard.url}
+                            alt={vid.snippet.title}
+                          />
+                        </p>
+                      </div>
+                      <div className="txtBox">
+                        <h2>{shortenText(trimTitle(vid.snippet.title), 50)}</h2>
 
-                      <Link
-                        to={`/detail/${vid.id}`}
-                        onMouseEnter={swiperRef.current?.autoplay.stop}
-                        onMouseLeave={swiperRef.current?.autoplay.start}
-                      >
-                        <span></span>View Detail
-                      </Link>
+                        <Link
+                          to={`/detail/${vid.id}`}
+                          onMouseEnter={swiperRef.current?.autoplay.stop}
+                          onMouseLeave={swiperRef.current?.autoplay.start}
+                        >
+                          <span></span>View Detail
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                </SwiperSlide>
-              );
-            })}
+                  </SwiperSlide>
+                );
+              })
+            : isPics &&
+              Pics.map((pic, idx) => {
+           
+                if (idx >= num.current) return null;
+                return (
+                  <SwiperSlide key={pic.id}>
+                    <div className="inner">
+                      <div className="picBox">
+                        <p>
+                          <img
+                            src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
+                            alt={pic.title}
+                          />
+                        </p>
+                        <p>
+                          <img
+                            src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`}
+                            alt={pic.title}
+                          />
+                        </p>
+                      </div>
+                      <div className="txtBox">
+                        <h2>{pic.title? shortenText(pic.title, 20) : 'Flickr Artist Image'}</h2>
+
+                        <Link
+                          to={`/gallery`}
+                          onMouseEnter={swiperRef.current?.autoplay.stop}
+                          onMouseLeave={swiperRef.current?.autoplay.start}
+                        >
+                          <span></span>Go Gallery
+                        </Link>
+                      </div>
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
         </Swiper>
       </figure>
+
       <nav className="stepBtns">
         <>
+          <p className="versionBtn" onClick={() => setVersion(!Version)}>
+            {Version ? "GALLERY" : "YOUTUBE"}
+          </p>
           <p
             className="prevBox"
             onClick={() => swiperRef.current.slidePrev(400)}

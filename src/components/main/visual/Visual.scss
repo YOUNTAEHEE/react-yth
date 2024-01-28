@@ -209,16 +209,29 @@
     // }
   }
 }
+
 .stepBtns {
   display: flex;
 
   width: 70%;
   margin: 0 auto;
   justify-content: flex-end;
-  line-height: 1.4rem;
+
   margin-bottom: 5px;
+  align-items: center;
+  .versionBtn {
+    line-height: 1rem;
+    padding: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 1px solid rgba(var(--baseColor-code), 0.2);
+    color: rgba(var(--baseColor-code), 0.5);
+    margin-right: 15px;
+    background-color: var(--inputBgColor);
+  }
   .prevBox,
   .nextBox {
+    line-height: 1.4rem;
     font-size: 1.4rem;
     cursor: pointer;
     border: 1px solid rgba(var(--baseColor-code), 0.2);

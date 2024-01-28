@@ -3,10 +3,10 @@ import Layout from "../../common/layout/Layout";
 import "./Community.scss";
 export default function Community() {
   const getLocalData = () => {
-		const data = localStorage.getItem('post');
-		if (data) return JSON.parse(data);
-		else return [];
-	};
+    const data = localStorage.getItem("post");
+    if (data) return JSON.parse(data);
+    else return [];
+  };
 
   const [Post, setPost] = useState(getLocalData());
   const [CurNum, setCurNum] = useState(0);
@@ -149,7 +149,7 @@ export default function Community() {
                     <>
                       <div className="txt">
                         <div>
-                          <p>{el.month}</p>
+                          <p>{el.month < 10 ? "0" + el.month : el.month}</p>
                           <p>{el.day}</p>
                         </div>
                         <input
@@ -175,7 +175,7 @@ export default function Community() {
                     <>
                       <div className="txt">
                         <div>
-                          <p>{el.month}</p>
+                          <p>{el.month < 10 ? "0" + el.month : el.month}</p>
                           <p>{el.day}</p>
                         </div>
                         <h2>{el.title}</h2>
