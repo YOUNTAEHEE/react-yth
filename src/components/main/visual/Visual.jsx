@@ -2,7 +2,7 @@ import "./Visual.scss";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Pagination, Autoplay } from "swiper";
 import "swiper/css";
-//import "swiper/css/pagination";
+
 import { useCustomText } from "../../../hooks/useText";
 import { useRef, useState } from "react";
 import { useYoutubeQuery } from "../../../hooks/useYoutubeQuery";
@@ -167,30 +167,3 @@ export default function Visual() {
   );
 }
 
-//Swiper control child componen
-// function Btns({ swiperRef, Rolling, setRolling }) {
-//   const startRolling = () => {
-//     swiperRef.current.slideNext(300);
-//     swiperRef.current.autoplay.start();
-//     setRolling(true);
-//   };
-
-//   const stopRolling = () => {
-//     swiperRef.current.autoplay.stop();
-//     setRolling(false);
-//   };
-
-//   return (
-//     <nav className="swiperController">
-//       {Rolling ? (
-//         <button onClick={stopRolling}>
-//           <IoPauseSharp />
-//         </button>
-//       ) : (
-//         <button onClick={startRolling}>
-//           <IoMdPlay />
-//         </button>
-//       )}
-//     </nav>
-//   );
-// }

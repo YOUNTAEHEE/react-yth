@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Layout from "../../common/layout/Layout";
 import "./Community.scss";
-//.
+
 export default function Community() {
   const getLocalData = () => {
     const data = localStorage.getItem("post");
