@@ -6,6 +6,8 @@ import Quotes from "../quotes/Quotes";
 import Visual from "../visual/Visual";
 import "./MainWrap.scss";
 import { useEffect } from "react";
+//.
+
 export default function MainWrap() {
   useEffect(() => {
     new Anime(window, { scroll: 0 });
