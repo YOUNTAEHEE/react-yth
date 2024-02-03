@@ -6,7 +6,7 @@ import Visual from "../visual/Visual";
 import "./MainWrap.scss";
 import { useEffect } from "react";
 import { useScroll } from "../../../hooks/useScroll";
-
+//.
 export default function MainWrap() {
   const { scrollTo } = useScroll();
 
