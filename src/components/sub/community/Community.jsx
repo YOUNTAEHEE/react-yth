@@ -3,9 +3,9 @@ import Layout from "../../common/layout/Layout";
 import "./Community.scss";
 export default function Community() {
   const getLocalData = () => {
-		const data = localStorage.getItem('post');
-		return JSON.parse(data);
-	};
+    const data = localStorage.getItem("post");
+    return JSON.parse(data);
+  };
 
   const [Post, setPost] = useState(getLocalData());
   const [CurNum, setCurNum] = useState(0);
@@ -174,8 +174,8 @@ export default function Community() {
                     <>
                       <div className="txt">
                         <div>
-                          <p>{el.month}</p>
-                          <p>{el.day}</p>
+                          <p>{el.month < 10 ? "0" + el.month : el.month}</p>
+                          <p>{el.day < 10 ? "0" + el.day : el.day}</p>
                         </div>
                         <h2>{el.title}</h2>
                         <p>{el.content}</p>
