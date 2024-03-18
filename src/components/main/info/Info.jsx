@@ -34,8 +34,8 @@ export default function Info() {
                 <article key={el + idx}>
                   <div className="txt">
                     <div>
-                      <p>{el.month}</p>
-                      <p>{el.day}</p>
+                    <p>{el.month < 10 ? "0" + el.month : el.month}</p>
+                      <p>{el.day < 10 ? "0" + el.day : el.day}</p>
                     </div>
                     <h2>{el.title}</h2>
                     <p>{el.content}</p>
