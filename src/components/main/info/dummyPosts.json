@@ -1,91 +1,91 @@
 {
   "dummyPosts": [
     {
-      "month": "03",
+      "month": "3",
       "day": "18",
       "title": "YOUN",
       "content": "Welcome to YOUN",
       "enableUpdate": false
     },
     {
-      "month": "03",
+      "month": "3",
       "day": "15",
       "title": "Hi",
       "content": "Hi, Nice to meet you.",
       "enableUpdate": false
     },
     {
-      "month": "03",
+      "month": "3",
       "day": "13",
       "title": "good",
       "content": "Today the weather is good.",
       "enableUpdate": false
     },
     {
-      "month": "03",
+      "month": "3",
       "day": "11",
       "title": "Notification",
       "content": "There will be a big event today, wait for it.",
       "enableUpdate": false
     },
     {
-      "month": "03",
+      "month": "3",
       "day": "10",
       "title": "Event Notice",
       "content": "The event is coming today at 12 o'clock.",
       "enableUpdate": false
     },
     {
-      "month": "03",
-      "day": "09",
+      "month": "3",
+      "day": "9",
       "title": "Who to join?",
       "content": "Would you like to join me?",
       "enableUpdate": false
     },
     {
-      "month": "03",
-      "day": "05",
+      "month": "3",
+      "day": "5",
       "title": "Today's weather",
       "content": "Good weather for a walk.",
       "enableUpdate": false
     },
     {
-      "month": "02",
+      "month": "2",
       "day": "20",
       "title": "mountain climbing",
       "content": "Who wants to go hiking with me?",
       "enableUpdate": false
     },
     {
-      "month": "02",
-      "day": "05",
+      "month": "2",
+      "day": "5",
       "title": "Good day",
       "content": "A good day, a day when a song comes to mind.",
       "enableUpdate": false
     },
     {
-      "month": "01",
+      "month": "1",
       "day": "28",
       "title": "Please",
       "content": "Leave a comment about YOUN.",
       "enableUpdate": false
     },
     {
-      "month": "01",
+      "month": "1",
       "day": "25",
       "title": "park events",
       "content": "There will be an event at the park today.",
       "enableUpdate": false
     },
     {
-      "month": "01",
+      "month": "1",
       "day": "20",
       "title": "Feel nature",
       "content": "Would you like to go experience it together?",
       "enableUpdate": false
     },
     {
-      "month": "01",
+      "month": "1",
       "day": "15",
       "title": "First post",
       "content": "There will be an event announcement to commemorate the first post.",
