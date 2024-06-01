@@ -25,7 +25,12 @@
     display: flex;
     justify-content: space-between;
 
-    span {
+    .controls_label {
+      margin-left: 3px;
+    }
+
+    span,
+    .controls_label {
       cursor: pointer;
       margin-top: 1px;
     }

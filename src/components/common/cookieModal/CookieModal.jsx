@@ -29,10 +29,14 @@ export default function CookieModal({ wid, ht, children }) {
           <div className="content">{children}</div>
           <div className="controls">
             <nav>
-              <input ref={checkEl} type="checkbox" />
-              <span> 오늘 하루 팝업보지 않기</span>
+              <input ref={checkEl} type="checkbox" id="popup-checkbox" />
+              <label htmlFor="popup-checkbox" className="controls_label">
+                오늘 하루 팝업보지 않기
+              </label>
             </nav>
-            <span onClick={handleClose}><IoMdClose /></span>
+            <span onClick={handleClose}>
+              <IoMdClose />
+            </span>
           </div>
         </aside>
       )}
