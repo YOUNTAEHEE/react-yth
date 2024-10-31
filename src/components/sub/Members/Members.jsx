@@ -256,9 +256,9 @@ export default function Members() {
         <div className="membersRightBox" ref={refFrame}>
           <p className="membersTypo">YOUN</p>
           <p className="subTypo">
-            YOUN TAE HEE
+            YOUN COMPANY
             <br />
-            PORTFOLIO
+            JOIN MEMBERS
           </p>
         </div>
       </div>
